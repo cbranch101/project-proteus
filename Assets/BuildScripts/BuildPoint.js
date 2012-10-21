@@ -1,15 +1,19 @@
 #pragma strict
 
-var buildPrompt : GameObject;
+var buildPrompt : Switch;
+var buildPopUp : Switch;
 var promptDelay = 2.0;
 
 function OnTriggerEnter(collider : Collider) {
 	if(collider.GetType() == CharacterController) {
-		buildPrompt.GetComponent(BuildPrompt).toggleSeen();
+		buildPrompt.toggleSeen();
+		buildPopUp.toggleSeen();
 	}
 }
 
 function OnTriggerExit() {
 	yield WaitForSeconds(promptDelay);
-	buildPrompt.GetComponent(BuildPrompt).toggleSeen();
+	buildPrompt.toggleSeen();
+	buildPopUp.toggleSeen();
 }
+
