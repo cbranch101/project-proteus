@@ -45,7 +45,6 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BuildScripts\BuildPoint.js" />
-     <Compile Include="Assets\BuildScripts\BuildPrompt.js" />
      <Compile Include="Assets\BuildScripts\Switch.js" />
      <Compile Include="Assets\GUI\Crosshair.js" />
      <Compile Include="Assets\Misc Scripts\DisableComponentOnPause.js" />
