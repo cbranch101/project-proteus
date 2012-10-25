@@ -2,28 +2,35 @@
 var slots: SchematicSlot[];
 var emptyTexture : Texture;
 var slotSize: int = 20;
+private var slotOrigin : Vector2;
+private var slotAreaRect : Rect;
+var slotAreaHeight : int = 500;
+var slotAreaWidth : int = 200;
+var slotAreaOffset : int = 50;
 var spacing = 10;
 private var mousePos : Vector2;
 private var pickedUpPiece : Piece;
 private var lastSlotForPickedUpPiece : SchematicSlot;
 
-
-static var boxes;
-
 function Start() {
-	setSlots();
+		setSlots();
+
+	
+}
+
+function setAreas() {
+	slotOrigin = new Vector2(Screen.width / 2, Screen.height / 2);
+	slotAreaRect = new Rect(slotOrigin.x, slotOrigin.y, slotAreaWidth, slotAreaHeight);
 }
 
 function setSlots() {
 	boxes = new Array();
 	var currentX;
 	var currentY;
-	var xOffset = Screen.width / 2;
-	var yOffset = Screen.height / 2;
 	var i = 0;
 	for(var slot : SchematicSlot in slots) {
-		currentX = xOffset + ((slotSize + spacing) * i);
-		currentY = yOffset; 
+		currentX = slotOrigin.x + ((slotSize + spacing) * i);
+		currentY = slotOrigin.y; 
 		slot.setLocationRect(currentX, currentY, slotSize);
 		if(!slot.isEmpty()) {
 			slot.connectPiece();
@@ -34,6 +41,7 @@ function setSlots() {
 
 function draw() {
 	setMousePosition();
+	setAreas();
 	handleClicks();
 	if(isPiecePickedUp()) {
 		var slotSize = lastSlotForPickedUpPiece.getSize();
