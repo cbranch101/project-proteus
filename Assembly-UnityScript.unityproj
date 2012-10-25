@@ -45,8 +45,11 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\BuildScripts\BuildPoint.js" />
+     <Compile Include="Assets\BuildScripts\BuildPrompt.js" />
      <Compile Include="Assets\BuildScripts\Switch.js" />
      <Compile Include="Assets\GUI\Crosshair.js" />
+     <Compile Include="Assets\GameTool.js" />
+     <Compile Include="Assets\Inventory.js" />
      <Compile Include="Assets\Misc Scripts\DisableComponentOnPause.js" />
      <Compile Include="Assets\Misc Scripts\DrawRockets.js" />
      <Compile Include="Assets\Misc Scripts\EnableWhenPaused.js" />
@@ -63,6 +66,9 @@
      <Compile Include="Assets\Misc Scripts\MusicPlayer.js" />
      <Compile Include="Assets\Misc Scripts\Visibility Culling\VisibilityCuller.js" />
      <Compile Include="Assets\Misc Scripts\Visibility Culling\VisibilityCullingArea.js" />
+     <Compile Include="Assets\ModifiedCharacterController.js" />
+     <Compile Include="Assets\ParkourMotor.js" />
+     <Compile Include="Assets\Screwdriver.js" />
      <Compile Include="Assets\Utility Scripts\Toggle.js" />
      <Compile Include="Assets\WeaponScripts\AI.js" />
      <Compile Include="Assets\WeaponScripts\AIAnimation.js" />
