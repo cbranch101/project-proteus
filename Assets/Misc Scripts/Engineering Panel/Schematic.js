@@ -4,23 +4,25 @@ var emptyTexture : Texture;
 var slotSize: int = 20;
 private var slotOrigin : Vector2;
 private var slotAreaRect : Rect;
-var slotAreaHeight : int = 500;
-var slotAreaWidth : int = 200;
+var slotAreaHeight : int = 200;
+var slotAreaWidth : int = 400;
 var slotAreaOffset : int = 50;
 var spacing = 10;
+var spaceBetweenSections : int = 20;
+var inventory : Inventory;
 private var mousePos : Vector2;
 private var pickedUpPiece : Piece;
 private var lastSlotForPickedUpPiece : SchematicSlot;
+private var inventorySlotCount = 5;
 
-function Start() {
-		setSlots();
-
-	
+function Awake() {
+	inventory = GetComponent(Inventory);
 }
 
-function setAreas() {
-	slotOrigin = new Vector2(Screen.width / 2, Screen.height / 2);
-	slotAreaRect = new Rect(slotOrigin.x, slotOrigin.y, slotAreaWidth, slotAreaHeight);
+function Start() {
+		slotOrigin = new Vector2(Screen.width / 2, Screen.height / 2);
+		setSlots();
+		
 }
 
 function setSlots() {
@@ -29,28 +31,30 @@ function setSlots() {
 	var currentY;
 	var i = 0;
 	for(var slot : SchematicSlot in slots) {
-		currentX = slotOrigin.x + ((slotSize + spacing) * i);
-		currentY = slotOrigin.y; 
+		currentX = (slotSize + spacing) * i;
+		currentY = 0;
 		slot.setLocationRect(currentX, currentY, slotSize);
 		if(!slot.isEmpty()) {
 			slot.connectPiece();
 		}
 		i++;
 	}
+	
 }
 
 function draw() {
 	setMousePosition();
-	setAreas();
 	handleClicks();
 	if(isPiecePickedUp()) {
 		var slotSize = lastSlotForPickedUpPiece.getSize();
 		pickedUpPiece.drawWhilePickedUp(mousePos, slotSize);
 	}
+	
 	drawSlots();
 }
 
 function handleClicks() {
+	
 	if(leftMouseWentDown()) {
 		// if there's not already a piece that's picked up
 		if(!isPiecePickedUp()) {
