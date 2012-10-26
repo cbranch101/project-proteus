@@ -1,7 +1,15 @@
 var emptyTexture : Texture;
-private var locationRect : Rect;
+public var locationRect : Rect;
 var piece : Piece;
 private var size : int;
+
+function SchematicSlot(newEmptyTexture : Texture) {
+	emptyTexture = newEmptyTexture;
+}
+
+function setEmptyTexture(newTexture : Texture){
+	emptyTexture = newTexture;
+}
 
 function setLocationRect(x : int, y : int, mySize : int) {
 	size = mySize;
@@ -40,7 +48,7 @@ function pickUpPiece() {
 }
 
 function placePiece(pieceToPlace : Piece) {
-	piece = pieceToPlace;
+	 piece = pieceToPlace;
 	connectPiece();
 }
 
