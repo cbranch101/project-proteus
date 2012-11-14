@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 3bb0e5d2c9742451ba4e501d8e1956a1
+=======
+guid: 138e56299e07d0f48b0d43df42bbe074
+>>>>>>> a13d873802484f1da7839fd13126a6a8f1d54027
 ModelImporter:
   fileIDToRecycleName:
     4300000: Wall_DoorFrame001

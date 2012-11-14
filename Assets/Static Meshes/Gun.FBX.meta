@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 4e8a985761c344c54a44f53338d0a65d
+=======
+guid: 32264800ba9c32d4a87fa9c65f592acd
+>>>>>>> a13d873802484f1da7839fd13126a6a8f1d54027
 ModelImporter:
   fileIDToRecycleName:
     4300000: Box001
