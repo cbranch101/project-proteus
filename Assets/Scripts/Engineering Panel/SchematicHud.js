@@ -257,6 +257,23 @@ function setInventorySlots(currentX : int, currentY : int) {
 	
 }
 
+function setTools(currentX: int, currentY : int) {
+	
+	currentX = slotOrigin.x;
+	currentY += (spaceBetweenSections + slotSize);
+	var i = 0;
+	
+	for(var toolTile : GameTool in inventory.tools) {
+		var inventorySlot = inventorySlots[i];
+		inventorySlot.setLocationRect(currentX, currentY, slotSize);
+		inventorySlot.setEmptyTexture(emptyInventorySlotTexture);
+		inventorySlot.placePiece(inventoryPiece);
+		slots.Push(inventorySlot);
+		currentX += (slotSize + spacing);
+	}
+	
+} 
+
 function placePieceInSlot(slot : SchematicSlot, piece: Piece) {
 	slot.placePiece(piece);
 }
