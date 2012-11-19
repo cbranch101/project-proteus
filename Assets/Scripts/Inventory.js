@@ -1,7 +1,7 @@
 #pragma strict
 
 var pieces : Piece[];
-var tools : GameTool[];
+var hudTools : GameTool[];
 
 
 function Start () {

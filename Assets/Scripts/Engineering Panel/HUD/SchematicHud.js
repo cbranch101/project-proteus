@@ -4,18 +4,23 @@ private var schematic : Schematic;
 var spacing = 10;
 var spaceBetweenSections : int = 15;
 var inventory : Inventory;
-var inventorySlots : SchematicSlot[];
+var inventorySlots : InventorySlot[];
 private var schematicSlots: SchematicSlot[];
-private var slots = new Array();
-var emptyInventorySlotTexture : Texture;
+private var tiles = new Array();
 var slotSize: int = 40;
+private var toolOrigin : Vector2;
 private var slotOrigin : Vector2;
 private var slotAreaRect : Rect;
 private var mousePos : Vector2;
 private var lastSlotForPickedUpPiece : SchematicSlot;
 private var inventorySlotCount = 5;
 private var pickedUpPiece : Piece = null;
-
+private var currentX : int;
+private var currentY : int;
+public var loosenOffset : int = 10;
+var playerHand : PlayerHand;
+private var lastClick : float = 0;
+private var clickInterval : float = 1.0;
 
 
 /**
@@ -31,10 +36,26 @@ function showHudForSchematic(newSchematic : Schematic) {
 	
 	schematic = newSchematic;
 	slotOrigin = new Vector2(Screen.width / 2, Screen.height / 2);
-	setSlots();
+	toolOrigin = new Vector2(slotOrigin.x, slotOrigin.y - 50);
+	setTiles();
+	setToolOriginInPlayerHand();
 	
 }
 
+
+function setToolOriginInPlayerHand() {
+	playerHand.setToolOrigin(toolOrigin);
+}
+
+function FixedUpdate() {
+	updateToolHUDInPlayerHand();
+}
+
+function updateToolHUDInPlayerHand() {
+	if(playerHand.toolIsWorking) {
+		playerHand.updateToolHUD();
+	}
+}
 
 function OnGUI() {
 		
@@ -53,24 +74,21 @@ function OnGUI() {
  */
 function draw() {
 	
-	setMousePosition();
+	
 	handleClicks();
-	
-	if(isPiecePickedUp()) {
 		
-		// set the slot size for the last piece that was picked up
-		var slotSize = lastSlotForPickedUpPiece.getSize();
-		
-		// draw the piece in between being picked up
-		// and placed in the next slot
-		pickedUpPiece.drawWhilePickedUp(mousePos, slotSize);
-		
-	}
-	
 	// draw all the current slots
-	drawSlots();
+	drawTiles();
+	drawPlayerHand();
 	
 }
+
+
+function drawPlayerHand() {
+	playerHand.draw(mousePos);
+}
+
+
 
 /**
  * handleClicks function.
@@ -81,67 +99,73 @@ function draw() {
  * @return void
  */
 function handleClicks() {
+	setMousePosition();
 	
-	if(leftMouseWentDown()) {
-		
-		// if there's not already a piece that's picked up
-		if(!isPiecePickedUp()) {
+	
+	if(!playerHand.toolIsWorking) {
+		handleHUDClicks();
+	}
+	
+}
+
+function handleHUDClicks() {
+		var mouseEvent : String = null;
+		var mousedOverTile = getMousedOverTile(mousePos);
+		if(leftMouseWentDown()) { 
 			
-			// get the slot that the piece is getting pulled out of
-			// so that if the piece isn't dropped into a slot
-			// we know where to replace it to. 
-			lastSlotForPickedUpPiece = getMousedOverSlot(mousePos);
+			mouseEvent = 'left_mouse_went_down';
 			
-			// set the current picked up piece
-			pickedUpPiece = pickUpPieceFromSlot(lastSlotForPickedUpPiece);
+			lastClick = Time.deltaTime;
+			if(mousedOverTile != null) {
+			
+				playerHand.manipulateTile(mousedOverTile, mouseEvent);
+				
+			} else {
+			
+				playerHand.onTileNotFound(mouseEvent);
+				
+			}
 			
 		}
 		
-	}
-	
-	if(leftMouseButtonWentUp()) {
+		if(leftMouseButtonWentUp()) {
 		
-		if(isPiecePickedUp()) {
+			mouseEvent = 'left_mouse_went_up';
 			
-			// set the piece to place
-			var pieceToPlace = pickedUpPiece ? pickedUpPiece : null;		
+			if(mousedOverTile != null) {
 			
-			if(pieceToPlace) {
+				playerHand.manipulateTile(mousedOverTile, mouseEvent);
 				
-				// get the new slot is moused over for the piece
-				var newSlotForPiece = getMousedOverSlot(mousePos);
+			} else {
+			
+				playerHand.onTileNotFound(mouseEvent);
 				
-				// if there is no new slot, place the piece back in the slot it was initially removed from
-				var slotToPlaceIn = newSlotForPiece ? newSlotForPiece : lastSlotForPickedUpPiece;
-				
-				// if there's current a piece in the slot being placed in, pick it up
-				var pieceInNewSlot = pickUpPieceFromSlot(newSlotForPiece);
 			}
-			
-			
-			if(pieceToPlace) {
-				
-				// place the picked up piece into the located slot
-				placePieceInSlot(slotToPlaceIn, pieceToPlace);
-			}
-			
-			// if there's another piece that was picked up, set it as the picked up piece
-			pickedUpPiece = pieceInNewSlot ? pieceInNewSlot : null;	
 			
 		}
-	}
+}
+
+function handleKeyPressesWhileToolHUDIsOpen() {
+	
 }
 
 function leftMouseWentDown() {
-	return Input.GetMouseButtonDown(0);
+
+	return Event.current.type == EventType.mouseDown;
+	
 }
 
 function leftMouseButtonWentUp() {
-	return Input.GetMouseButtonUp(0);
+
+	return Event.current.type == EventType.mouseUp;
+	
 }
 
+
 function setMousePosition() {
+
 	mousePos = new Vector2(Event.current.mousePosition.x, Event.current.mousePosition.y);
+	
 }
 
 /**
@@ -153,26 +177,25 @@ function setMousePosition() {
  * @param mousePos : Vector2
  * @return slot : SchematicSlot
  */
-function getMousedOverSlot(mousePos : Vector2) {
+function getMousedOverTile(mousePos : Vector2) {
 	
 	// set the mousedOverSlot as null if nothing is found
-	var mousedOverSlot = null;
+	var mousedOverTile : HUDTile = null;
 	
 	// iterate over the slots
-	for(var slot : SchematicSlot in slots) {	
+	for(var tile : HUDTile in tiles) {	
 		
 		// if the current slot is currently being moused over
-		if(slot.isMousedOver(mousePos)) {
-			
+		if(tile.isMousedOver(mousePos)) {
 			// return the slot
-			mousedOverSlot = slot;
+			mousedOverTile = tile;
 			break;
 			
 		}
 		
 	}
 	
-	return mousedOverSlot;
+	return mousedOverTile;
 	
 }
 
@@ -184,13 +207,12 @@ function getMousedOverSlot(mousePos : Vector2) {
  * @access public
  * @return void
  */
-function drawSlots() {
+function drawTiles() {
 	
 	// iterate over all the slots
-	for(var slot : SchematicSlot in slots) {
-		
+	for(var tile : HUDTile in tiles) {
 		// draw the slot
-		slot.draw();
+		tile.draw();
 		
 	}
 	
@@ -205,72 +227,126 @@ function drawSlots() {
  * @access public
  * @return void
  */
-function setSlots() {
+function setTiles() {
 	
 	schematicSlots = schematic.slots;
 	
 	// set the current X and Y from the slot Origin
 	// to move from slot to slot and draw the HUD
-	var currentX : int = slotOrigin.x;
-	var currentY : int = slotOrigin.y;
+	currentX = slotOrigin.x;
+	currentY = slotOrigin.y;
 	
-	setSchematicSlots(currentX, currentY);
-	setInventorySlots(currentX, currentY);
+	setToolTiles();
+	setSchematicSlots();
+	setInventorySlots();
 		
 }
 
-function setSchematicSlots(currentX : int, currentY : int) {
+function setSchematicSlots() {
 	
+	currentX = slotOrigin.x;
+	currentY += (spaceBetweenSections + slotSize);
 	var i = 0;
+	
 	for(var slot : SchematicSlot in schematicSlots) {
 		
 		// set the location rectange for a single slot
 		slot.setLocationRect(currentX, currentY, slotSize);
+		slot.setLoosenOffset(loosenOffset);
 		
 		// if there's a piece in the current slot
 		if(!slot.isEmpty()) {
+		
 			slot.connectPiece();
+			
 		}
 		
 		currentX += (slotSize + spacing);
-		slots.Push(slot);
+		tiles.Push(slot);
 		i++;
 		
 	}
 	
 }
 
-function setInventorySlots(currentX : int, currentY : int) {
+function setInventorySlots() {
 	
 	currentX = slotOrigin.x;
 	currentY += (spaceBetweenSections + slotSize);
 	var i = 0;
 	
+	// iterate over the inventory slots and place all the pieces in those slots
 	for(var inventoryPiece : Piece in inventory.pieces) {
-		var inventorySlot = inventorySlots[i];
-		inventorySlot.setLocationRect(currentX, currentY, slotSize);
-		inventorySlot.setEmptyTexture(emptyInventorySlotTexture);
-		inventorySlot.placePiece(inventoryPiece);
-		slots.Push(inventorySlot);
-		currentX += (slotSize + spacing);
+		
+		Debug.Log('piece being added');
+		var slotForPiece = inventorySlots[i];
+		slotForPiece.placePiece(inventoryPiece);
+		inventorySlots[i] = slotForPiece;
+		i++;
+		
 	}
+	
+	// set all the slots
+	for(var inventorySlot : InventorySlot in inventorySlots) {
+		
+		// set the location rect for the inventory slot
+		inventorySlot.setLocationRect(currentX, currentY, slotSize);
+		
+		// update the current location
+		currentX += (slotSize + spacing);
+		
+		tiles.Push(inventorySlot);
+		
+	}
+	
 	
 }
 
+function setToolTiles() {
+	
+	currentX = slotOrigin.x;
+	var i = 0;
+	
+	for(var gameTool : GameTool in inventory.hudTools) {
+		
+		var toolTile = gameTool.getToolTile();
+		
+		if(toolTile) {
+			
+			toolTile.setTool(gameTool);
+			toolTile.setLocationRect(currentX, currentY, slotSize);
+			tiles.Push(toolTile);
+			currentX += (slotSize + spacing);
+			
+		}
+		
+	}	
+} 
+
 function placePieceInSlot(slot : SchematicSlot, piece: Piece) {
+
 	slot.placePiece(piece);
+	
 }
 
 function pickUpPieceFromSlot(slot : SchematicSlot) {
+
 	pickedUpPiece = null;
+	
 	if(slot) {
+	
 		pickedUpPiece = slot.pickUpPiece();
+		
 	}
+	
 	return pickedUpPiece;
+	
 } 
 
 function isPiecePickedUp() {
+
 	return pickedUpPiece != null;
+	
 }
 
 

@@ -18,11 +18,11 @@ function removeFromSlot() {
 	return currentSlot;
 }
 
-function connectSlot(mySlot : SchematicSlot) {
+function putInSlot(mySlot : SchematicSlot) {
 	slot = mySlot;
 }
 
-function disconnectSlot() {
+function takeOutOfSlot() {
 	slot = null;
 }
 
