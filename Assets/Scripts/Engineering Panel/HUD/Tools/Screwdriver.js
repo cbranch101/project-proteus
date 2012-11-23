@@ -20,12 +20,14 @@ class Screwdriver extends GameTool {
 		var hit : RaycastHit;
 		var direction = transform.TransformDirection(Vector3.forward);
 		if(Physics.Raycast(transform.position, direction, hit, openRange)) {
-			openedObject = hit.collider;
-			var schematicHandler = openedObject.GetComponent(SchematicHandler);
+			var targetedObject = hit.collider;
+			var openedObject : GameObject = hit.collider.gameObject;
+			
+			var schematicHandler = targetedObject.GetComponent(SchematicHandler);
 			if(schematicHandler) {
 				schematic = schematicHandler.schematic;
 				objectIsOpen = true;
-				hudHandler.showHUD(schematic);
+				hudHandler.showHUD(schematic, openedObject);
 			}
 		}
 	}

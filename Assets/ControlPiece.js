@@ -1,0 +1,3 @@
+class ControlPiece extends Piece {
+	
+}

@@ -5,7 +5,9 @@ class InventorySlot extends SchematicSlot {
 	}
 			
 	function setTextureToDraw() {
-			
+		
+		var piece = getPiece();	
+		
 		if(piece) {
 			
 			textureToDraw = piece.getTexture();
@@ -19,13 +21,15 @@ class InventorySlot extends SchematicSlot {
 		
 	}
 	
-	function placePiece(pieceToPlace : Piece) {
+	function draw() {
 	
-		piece = pieceToPlace;
-		connectPiece();
+		setTextureToDraw();
+		
+		GUI.DrawTexture(locationRect, textureToDraw);
 		
 	}
 	
+		
 	function tryToPickUpPiece() {
 		
 		var pickedUpPiece : Piece = pickUpPiece();

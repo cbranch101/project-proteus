@@ -1,0 +1,5 @@
+class PowerPiece extends Piece {
+	
+	
+	
+}
