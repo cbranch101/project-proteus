@@ -59,17 +59,22 @@
      <Compile Include="Assets\Scripts\BuildPoint\BuildPoint.js" />
      <Compile Include="Assets\Scripts\BuildPoint\Switch.js" />
      <Compile Include="Assets\Scripts\Engineering Panel\GUISlot.js" />
-     <Compile Include="Assets\Scripts\Engineering Panel\HUDHandler.js" />
-     <Compile Include="Assets\Scripts\Engineering Panel\MyGui.js" />
-     <Compile Include="Assets\Scripts\Engineering Panel\Piece.js" />
-     <Compile Include="Assets\Scripts\Engineering Panel\Schematic.js" />
-     <Compile Include="Assets\Scripts\Engineering Panel\SchematicHandler.js" />
-     <Compile Include="Assets\Scripts\Engineering Panel\SchematicHud.js" />
-     <Compile Include="Assets\Scripts\Engineering Panel\SchematicSlot.js" />
-     <Compile Include="Assets\Scripts\GameTool.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\HUDHandler.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\MyGui.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\PlayerHand.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\SchematicHud.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Schematics\Pieces\Piece.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Schematics\Schematic.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Schematics\SchematicHandler.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tiles\HUDTile.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tiles\InventorySlot.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tiles\SchematicSlot.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tiles\ToolTile.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tools\GameTool.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tools\Pliers.js" />
+     <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tools\Screwdriver.js" />
      <Compile Include="Assets\Scripts\Inventory.js" />
      <Compile Include="Assets\Scripts\ModifiedCharacterController.js" />
-     <Compile Include="Assets\Scripts\Screwdriver.js" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
   </ItemGroup>
   <ItemGroup>
