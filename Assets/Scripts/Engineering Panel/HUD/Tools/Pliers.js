@@ -19,6 +19,7 @@ class Pliers extends GameTool {
 	private var minPressSpeed : float = 1.5;
 	private var pressSpeed : float;
 	private var workedOnTile : HUDTile;
+	var progressRate : float = .05;
 	
 	@System.NonSerialized
 	var picksUpPieceWhenFinishedWorking : boolean = true;
@@ -88,7 +89,7 @@ class Pliers extends GameTool {
 			}
 			
 			progressSpeed = endFailPoint - focusBarX;
-			var distance = Time.deltaTime / (.05 * progressSpeed);
+			var distance = Time.deltaTime / (progressRate * progressSpeed);
 			currentProgress += distance;
 			
 			if(currentProgress >= 1) {
@@ -109,7 +110,7 @@ class Pliers extends GameTool {
 	
 	function onSuccess() {
 		
-		if(workedOnTile.pieceIsLoosened) {
+		if(workedOnTile.currentPieceIsLoosened()) {
 			
 			workedOnTile.tightenPiece();
 			
@@ -125,7 +126,7 @@ class Pliers extends GameTool {
 	
 	
 	function onFailure() {
-		if(!workedOnTile.isPieceLoosened) {
+		if(!workedOnTile.currentPieceIsLoosened()) {
 			workedOnTile.loosenPiece();
 		}
 		

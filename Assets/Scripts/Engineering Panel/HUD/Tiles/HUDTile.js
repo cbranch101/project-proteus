@@ -23,7 +23,7 @@ function draw() {
 }
 
 function setTextureToDraw() {
-	return null;
+	
 }
 
 function getTool() {
@@ -46,7 +46,7 @@ function loosenPiece() {
 	
 }
 
-function placePiece(pieceToPlace : Piece) {
+function placePiece(pieceToPlace : Piece, placeLoosely : boolean) {
 	
 }
 
@@ -62,6 +62,11 @@ function hasLoosenedPiece() {
 function breakCurrentPiece() {
 	
 }
+
+function currentPieceIsLoosened() {
+	return false;
+}
+
 
 
 

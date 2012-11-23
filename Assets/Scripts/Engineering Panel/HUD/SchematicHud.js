@@ -6,7 +6,7 @@ var spaceBetweenSections : int = 15;
 var inventory : Inventory;
 var inventorySlots : InventorySlot[];
 private var schematicSlots: Component[];
-private var tiles = new Array();
+private var tiles : Component[];
 var slotSize: int = 40;
 private var toolOrigin : Vector2;
 private var slotOrigin : Vector2;
@@ -225,6 +225,7 @@ function drawTiles() {
 	
 	// iterate over all the slots
 	for(var tile : HUDTile in tiles) {
+		
 		// draw the slot
 		tile.draw();
 		
@@ -246,7 +247,9 @@ function setTiles() {
 	
 	
 	schematicSlots = schematic.slots;
-	attachSlotsFromSchematicToSchematicHUD();
+	attachSlotsFromSchematic();
+	attachSlotsFromInventory();
+	attachToolTilesFromInventory();
 	// set the current X and Y from the slot Origin
 	// to move from slot to slot and draw the HUD
 	currentX = slotOrigin.x;
@@ -255,12 +258,45 @@ function setTiles() {
 	setToolTiles();
 	setSchematicSlots();
 	setInventorySlots();
-		
+	getAllTiles();
+			
 }
 
+function getSchematicSlots() {
+	return gameObject.GetComponentsInChildren(SchematicSlot);
+}
 
+function getAllTiles() {
+	tiles = gameObject.GetComponentsInChildren(HUDTile);
+}
 
-function attachSlotsFromSchematicToSchematicHUD() {
+function attachToolTilesFromInventory() {
+	
+	var inventoryTools = inventory.GetComponentsInChildren(GameTool);
+	
+	for(var gameTool : GameTool in inventoryTools) {
+		
+		var toolTile : ToolTile = gameTool.getToolTile();
+		
+		if(toolTile) {
+			toolTile.setTool(gameTool);
+			toolTile.transform.parent = gameObject.transform;
+		}
+		
+		
+	}
+	
+}
+
+function attachSlotsFromInventory() {
+	var inventorySlots = inventory.GetComponentsInChildren(InventorySlot);
+	
+	for(var inventorySlot : InventorySlot in inventorySlots) {
+		inventorySlot.transform.parent = gameObject.transform;
+	}
+}
+
+function attachSlotsFromSchematic() {
 	
 	var schematicSlotsInSchematic = schematic.GetComponentsInChildren(SchematicSlot);
 	
@@ -279,22 +315,22 @@ function setSchematicSlots() {
 	currentY += (spaceBetweenSections + slotSize);
 	var i = 0;
 	
+	
+	var schematicSlots = getSchematicSlots();
+	
 	for(var slot : SchematicSlot in schematicSlots) {
 		
-		// set the location rectange for a single slot
-		slot.setLocationRect(currentX, currentY, slotSize);
-		slot.setLoosenOffset(loosenOffset);
-		
-		// if there's a piece in the current slot
-		if(!slot.isEmpty()) {
-		
-			slot.connectPiece();
+		// because inventory slot inherits from schematic slot
+		// it gets returned in GetComponenetsInChildren
+		if(slot.GetType() != InventorySlot) {
+			
+			// set the location rectange for a single slot
+			slot.setLocationRect(currentX, currentY, slotSize);
+			slot.setLoosenOffset(loosenOffset);
+			
+			currentX += (slotSize + spacing);
 			
 		}
-		
-		currentX += (slotSize + spacing);
-		tiles.Push(slot);
-		i++;
 		
 	}
 	
@@ -306,29 +342,15 @@ function setInventorySlots() {
 	currentY += (spaceBetweenSections + slotSize);
 	var i = 0;
 	
-	// iterate over the inventory slots and place all the pieces in those slots
-	for(var inventoryPiece : Piece in inventory.pieces) {
-		
-		var slotForPiece = inventorySlots[i];
-		slotForPiece.placePiece(inventoryPiece);
-		inventorySlots[i] = slotForPiece;
-		i++;
-		
-	}
 	
-	// set all the slots
+	var inventorySlots = gameObject.GetComponentsInChildren(InventorySlot);
+	
 	for(var inventorySlot : InventorySlot in inventorySlots) {
-		
-		// set the location rect for the inventory slot
+	
 		inventorySlot.setLocationRect(currentX, currentY, slotSize);
-		
-		// update the current location
 		currentX += (slotSize + spacing);
 		
-		tiles.Push(inventorySlot);
-		
-	}
-	
+	}	
 	
 }
 
@@ -337,23 +359,18 @@ function setToolTiles() {
 	currentX = slotOrigin.x;
 	var i = 0;
 	
-	for(var gameTool : GameTool in inventory.hudTools) {
+	var toolTiles = gameObject.GetComponentsInChildren(ToolTile);
+	
+	for(var toolTile : ToolTile in toolTiles) {
 		
-		var toolTile = gameTool.getToolTile();
-		
-		if(toolTile) {
-			
-			toolTile.setTool(gameTool);
-			toolTile.setLocationRect(currentX, currentY, slotSize);
-			tiles.Push(toolTile);
-			currentX += (slotSize + spacing);
-			
-		}
+		toolTile.setLocationRect(currentX, currentY, slotSize);
+		currentX += (slotSize + spacing);
 		
 	}	
 	
 } 
 
+/*
 function powerUpAllSchematicSlots() {
 	
 	for (var tile : HUDTile in tiles) {
@@ -366,6 +383,7 @@ function powerUpAllSchematicSlots() {
 		
 	}
 }
+*/
 
 
 

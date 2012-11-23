@@ -17,6 +17,17 @@ class SchematicSlot extends HUDTile {
 	protected var isProcessed = false;
 				
 	
+	function getPiece() {
+		
+		var piece : Piece = gameObject.GetComponentInChildren(Piece);
+		return piece;
+		
+	}
+	
+	function hasPiece() {
+		return getPiece() == null;
+	}
+	
 	/**
 	 * runDiagnostic function.
 	 * 
@@ -29,11 +40,13 @@ class SchematicSlot extends HUDTile {
 		correctPieceIsFirmlyConnected();
 	}
 	
+		
 	function correctPieceIsFirmlyConnected() {
 /* 		Debug.Log(piece); */
 	}
 	
 	function currentPieceIsAllowed() {
+		piece = getPiece();
 		return piece.GetType() == allowedPiece.GetType();
 	}
 	
@@ -69,6 +82,8 @@ class SchematicSlot extends HUDTile {
 	
 	function setTextureToDraw() {
 		
+		piece = getPiece();
+		
 		if(piece) {
 		
 			textureToDraw = piece.getTexture();
@@ -94,22 +109,28 @@ class SchematicSlot extends HUDTile {
 		return piece == null;
 		
 	}
-	
-	function getPiece() {
-	
-		return piece;
 		
-	}
-	
 	function getSize() {
 	
 		return size;
 		
 	}
 	
-	function removalIsSuccessful() {
+	function currentPieceIsLoosened() {
+		
+		var piece : Piece = getPiece();
+		var pieceIsLoosened : boolean = false;
+		
+		if(piece) {
+			pieceIsLoosened = piece.isLoosened;
+		}
+		
+		return pieceIsLoosened;
+	}
 	
-		if(!pieceIsLoosened) {
+	function removalIsSuccessful() {
+					
+		if(!currentPieceIsLoosened()) {
 		
 			var removalRoll : float = Random.Range(0, 100.0);
 			
@@ -133,17 +154,15 @@ class SchematicSlot extends HUDTile {
 		
 	function pickUpPiece() {
 	
-		var currentPiece = piece ? piece : null;
+		piece = getPiece();
 		
-		if(currentPiece) {
-		
-			disconnectPiece();
-			piece = null;
+		if(piece) {
 			
+			piece.transform.parent = null;			
 			
 		}
 		
-		return currentPiece;
+		return piece;
 		
 	}
 	
@@ -151,10 +170,11 @@ class SchematicSlot extends HUDTile {
 	
 		setTextureToDraw();
 		
-		if(pieceIsLoosened == true) {
+		
+		if(currentPieceIsLoosened()) {
 			
-			if(piece) {
-			
+			if(getPiece()) {
+				
 				var offsetRect = Rect(locationRect.x + loosenOffset, locationRect.y + loosenOffset, size, size);
 				GUI.DrawTexture(locationRect, emptyTexture);
 				GUI.DrawTexture(offsetRect, textureToDraw);
@@ -174,61 +194,38 @@ class SchematicSlot extends HUDTile {
 		if(piece) {
 			
 			// take out the current piece
-			piece.takeOutOfSlot();
+			piece.breakSelf();
 			
-			// set the current piece as the broken piece
-			piece = brokenPiece;
-			
-			// put this new piece back in the slot
-			piece.putInSlot(this);
 		}
 		
 	}
 	
 	function loosenPiece() {
-		if(piece) {
-			pieceIsLoosened = true;
+		if(getPiece()) {
+			piece.isLoosened = true;
 		}
 	}
 	
 	function tightenPiece() {
-		
-		if(piece) {
-			pieceIsLoosened = false;
+		if(getPiece()) {
+			piece.isLoosened = false;
 		}
 		
 	}
 	
-	function placePiece(pieceToPlace : Piece) {
+	function placePiece(pieceToPlace : Piece, placeLoosely : boolean) {
 		
-		
-		piece = pieceToPlace;
 		putPieceInSlot(pieceToPlace);
+		pieceToPlace.isLoosened = placeLoosely;
 		
 	}
 	
 	function putPieceInSlot(pieceToPlace) {
 		
-		pieceIsLoosened = true;
-		piece = pieceToPlace;
-		piece.putInSlot(this);
+		pieceToPlace.transform.parent = gameObject.transform;		
 		
 	}
-		
-	function connectPiece() {
-	
-		pieceIsLoosened = false;
-		piece.putInSlot(this);
-		
-	}
-	
-	function disconnectPiece() {
-		
-		pieceIsLoosened = false;
-		piece.takeOutOfSlot();
-		
-	}
-	
+			
 	function tryToPickUpPiece() {
 		
 		if(!removalIsSuccessful()) {

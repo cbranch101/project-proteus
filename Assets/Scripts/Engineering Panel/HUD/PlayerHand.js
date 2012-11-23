@@ -1,7 +1,6 @@
 #pragma strict
 
 private var selectedTool : GameTool;
-private var pickedUpPiece : Piece;
 private var allowPickUp = false;
 private var lastTileForPickedUpPiece : HUDTile;
 private var usedTool : GameTool;
@@ -31,6 +30,8 @@ function updateToolHUD() {
 
 function draw(mousePos) {
 	
+	var pickedUpPiece : Piece = getPickedUpPiece();
+	
 	if(pickedUpPiece) {
 	
 		var tileSize = lastTileForPickedUpPiece.getSize();
@@ -52,7 +53,7 @@ function manipulateTile(tile : HUDTile, mouseEvent : String) {
 	} else {
 	
 		if(tile.GetType() == InventorySlot) {
-		
+			
 			manipulateInventorySlot(tile, mouseEvent);
 			
 		} else {
@@ -67,45 +68,43 @@ function manipulateTile(tile : HUDTile, mouseEvent : String) {
 }
 
 function onTileNotFound(mouseEvent: String) {
+	var pickedUpPiece : Piece = getPickedUpPiece();
 	if(leftMouseWentUp(mouseEvent)) {
 				
 		if(pickedUpPiece) {
-			lastTileForPickedUpPiece.placePiece(pickedUpPiece);
-			pickedUpPiece = null;
+			lastTileForPickedUpPiece.placePiece(pickedUpPiece, false);
 		}
 		
 	}
 }
 
+function getPickedUpPiece() {
+	return gameObject.GetComponentInChildren(Piece);
+}
+
 
 function manipulateInventorySlot(inventorySlot : HUDTile, mouseEvent : String) {
+	var pickedUpPiece : Piece = getPickedUpPiece();
 	
 	if(leftMouseWentDown(mouseEvent)) {
 		
 		if(!pickedUpPiece) {
 												
-					
-			pickedUpPiece = inventorySlot.tryToPickUpPiece();
-			
-			// if there a piece was picked up, store if for later
-			if(pickedUpPiece) {
-				
-				lastTileForPickedUpPiece = inventorySlot;
-				
-			}
-			
+
+			pickUpPieceFromTile(inventorySlot);
+						
 		}
 		
 	}
 	
 	if(leftMouseWentUp(mouseEvent)) {
 		if(pickedUpPiece) {
-			inventorySlot.placePiece(pickedUpPiece);
-			pickedUpPiece = null;
+			inventorySlot.placePiece(pickedUpPiece, true);
 		}
 	}
 		
 }
+
 
 function onToolFinishedWorking(slot : SchematicSlot) {
 		
@@ -126,15 +125,21 @@ function onToolFinishedWorking(slot : SchematicSlot) {
 
 function pickUpPieceFromTile(tile : HUDTile) {
 	
-	pickedUpPiece = tile.tryToPickUpPiece();
+	var pickedUpPiece : Piece = tile.tryToPickUpPiece();
 	
 	// if there a piece was picked up, store if for later
 	if(pickedUpPiece) {
+		
+		pickedUpPiece.transform.parent = gameObject.transform;
 		lastTileForPickedUpPiece = tile;
+		
 	}
 }
 
 function manipulateSchematicSlot(schematicSlot : HUDTile, mouseEvent : String) {
+	
+	var pickedUpPiece : Piece = getPickedUpPiece();
+	
 	if(leftMouseWentDown(mouseEvent)) {
 		
 		if(!pickedUpPiece) {
@@ -157,10 +162,14 @@ function manipulateSchematicSlot(schematicSlot : HUDTile, mouseEvent : String) {
 	}
 	
 	if(leftMouseWentUp(mouseEvent)) {
+		
 		if(pickedUpPiece) {
-			schematicSlot.placePiece(pickedUpPiece);
-			pickedUpPiece = null;
+		
+			schematicSlot.placePiece(pickedUpPiece, true);
+			
+			
 		}
+		
 	}
 	
 }
@@ -176,6 +185,7 @@ function leftMouseWentUp(mouseEvent : String) {
 
 function manipulateToolTile(toolTile : HUDTile, mouseEvent : String) {
 	
+	var pickedUpPiece : Piece = getPickedUpPiece();
 	// you can only manipulate tool tiles if you don't have a piece currently in hand
 	if(!pickedUpPiece) {
 		
@@ -190,6 +200,8 @@ function manipulateToolTile(toolTile : HUDTile, mouseEvent : String) {
 }
 
 function onLeftMouseDown(tile : HUDTile) {
+	
+	var pickedUpPiece : Piece = getPickedUpPiece();
 	
 	if(!pickedUpPiece) {
 		
@@ -230,12 +242,8 @@ function onLeftMouseDown(tile : HUDTile) {
 				
 				if(allowPickUp) {
 					
-					
-					pickedUpPiece = tile.tryToPickUpPiece();
-					if(pickedUpPiece) {
-						lastTileForPickedUpPiece = tile;
-					}
-					
+					pickUpPieceFromTile(tile);
+										
 				}
 				
 				// try to pick up a piece out of the slot

@@ -13,6 +13,11 @@ class ToolTile extends HUDTile {
 	function setTool(newTool : GameTool) {
 		tool = newTool;
 	}
+	
+	function draw() {
+		setTextureToDraw();
+		GUI.DrawTexture(locationRect, textureToDraw);
+	}
 				
 	
 }
