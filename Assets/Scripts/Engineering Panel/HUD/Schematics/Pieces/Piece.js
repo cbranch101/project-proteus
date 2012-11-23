@@ -1,28 +1,32 @@
 #pragma strict
 
 var texture : Texture;
-private var slot : SchematicSlot;
+var brokenTexture : Texture;
+private var isBroken : boolean;
+var isLoosened : boolean = false;
 
 
 function getTexture() {
-	return texture;
+	if(isBroken) {
+		return brokenTexture;
+	} else {
+		return texture;
+	}
 }
 
 function drawWhilePickedUp(mousePos : Vector2, slotSize : int) {
-	GUI.DrawTexture(Rect(mousePos.x, mousePos.y, slotSize, slotSize), texture);
+	GUI.DrawTexture(Rect(mousePos.x, mousePos.y, slotSize, slotSize), getTexture());
 }
 
-function removeFromSlot() {
-	var currentSlot = slot;
-	slot = null;
-	return currentSlot;
+function breakSelf() {
+	isBroken = true;
 }
 
-function putInSlot(mySlot : SchematicSlot) {
-	slot = mySlot;
+function loosen() {
+	isLoosened = true;
 }
 
-function takeOutOfSlot() {
-	slot = null;
+function tighten() {
+	isLoosened = false;
 }
 

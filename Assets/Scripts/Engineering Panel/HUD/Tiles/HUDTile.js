@@ -4,6 +4,10 @@ protected var locationRect : Rect;
 protected var textureToDraw : Texture;
 protected var size;
 
+@System.NonSerialized
+var pieceIsLoosened = false;
+
+
 function setLocationRect(x : int, y : int, mySize : int) {
 	size = mySize;
 	locationRect = new Rect(x, y, size, size);
@@ -19,7 +23,7 @@ function draw() {
 }
 
 function setTextureToDraw() {
-	return null;
+	
 }
 
 function getTool() {
@@ -42,7 +46,7 @@ function loosenPiece() {
 	
 }
 
-function placePiece(pieceToPlace : Piece) {
+function placePiece(pieceToPlace : Piece, placeLoosely : boolean) {
 	
 }
 
@@ -54,6 +58,15 @@ function hasLoosenedPiece() {
 
 	return false;
 }
+
+function breakCurrentPiece() {
+	
+}
+
+function currentPieceIsLoosened() {
+	return false;
+}
+
 
 
 

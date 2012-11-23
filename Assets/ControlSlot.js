@@ -1,0 +1,6 @@
+class ControlSlot extends SchematicSlot {
+	
+	
+	
+	
+}

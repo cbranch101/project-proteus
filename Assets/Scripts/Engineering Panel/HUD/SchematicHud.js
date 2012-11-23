@@ -5,8 +5,8 @@ var spacing = 10;
 var spaceBetweenSections : int = 15;
 var inventory : Inventory;
 var inventorySlots : InventorySlot[];
-private var schematicSlots: SchematicSlot[];
-private var tiles = new Array();
+private var schematicSlots: Component[];
+private var tiles : Component[];
 var slotSize: int = 40;
 private var toolOrigin : Vector2;
 private var slotOrigin : Vector2;
@@ -19,8 +19,7 @@ private var currentX : int;
 private var currentY : int;
 public var loosenOffset : int = 10;
 var playerHand : PlayerHand;
-private var lastClick : float = 0;
-private var clickInterval : float = 1.0;
+private var objectWithSchematic : GameObject;
 
 
 /**
@@ -32,8 +31,9 @@ private var clickInterval : float = 1.0;
  * @param newSchematic : Schematic
  * @return void
  */
-function showHudForSchematic(newSchematic : Schematic) {
+function showHudForSchematic(newSchematic : Schematic, newObjectWithSchematic : GameObject) {
 	
+	objectWithSchematic = newObjectWithSchematic;
 	schematic = newSchematic;
 	slotOrigin = new Vector2(Screen.width / 2, Screen.height / 2);
 	toolOrigin = new Vector2(slotOrigin.x, slotOrigin.y - 50);
@@ -44,17 +44,25 @@ function showHudForSchematic(newSchematic : Schematic) {
 
 
 function setToolOriginInPlayerHand() {
+	
 	playerHand.setToolOrigin(toolOrigin);
+	
 }
 
-function FixedUpdate() {
+function Update() {
+
 	updateToolHUDInPlayerHand();
+	
 }
 
 function updateToolHUDInPlayerHand() {
+
 	if(playerHand.toolIsWorking) {
+	
 		playerHand.updateToolHUD();
+		
 	}
+	
 }
 
 function OnGUI() {
@@ -85,7 +93,9 @@ function draw() {
 
 
 function drawPlayerHand() {
+
 	playerHand.draw(mousePos);
+	
 }
 
 
@@ -99,8 +109,8 @@ function drawPlayerHand() {
  * @return void
  */
 function handleClicks() {
+
 	setMousePosition();
-	
 	
 	if(!playerHand.toolIsWorking) {
 		handleHUDClicks();
@@ -109,13 +119,14 @@ function handleClicks() {
 }
 
 function handleHUDClicks() {
+
 		var mouseEvent : String = null;
 		var mousedOverTile = getMousedOverTile(mousePos);
+		
 		if(leftMouseWentDown()) { 
 			
 			mouseEvent = 'left_mouse_went_down';
-			
-			lastClick = Time.deltaTime;
+						
 			if(mousedOverTile != null) {
 			
 				playerHand.manipulateTile(mousedOverTile, mouseEvent);
@@ -143,10 +154,13 @@ function handleHUDClicks() {
 			}
 			
 		}
+		
 }
 
-function handleKeyPressesWhileToolHUDIsOpen() {
-	
+function tryToActiveAllSlots() {
+
+		
+
 }
 
 function leftMouseWentDown() {
@@ -211,6 +225,7 @@ function drawTiles() {
 	
 	// iterate over all the slots
 	for(var tile : HUDTile in tiles) {
+		
 		// draw the slot
 		tile.draw();
 		
@@ -228,9 +243,13 @@ function drawTiles() {
  * @return void
  */
 function setTiles() {
+
+	
 	
 	schematicSlots = schematic.slots;
-	
+	attachSlotsFromSchematic();
+	attachSlotsFromInventory();
+	attachToolTilesFromInventory();
 	// set the current X and Y from the slot Origin
 	// to move from slot to slot and draw the HUD
 	currentX = slotOrigin.x;
@@ -239,7 +258,55 @@ function setTiles() {
 	setToolTiles();
 	setSchematicSlots();
 	setInventorySlots();
+	getAllTiles();
+			
+}
+
+function getSchematicSlots() {
+	return gameObject.GetComponentsInChildren(SchematicSlot);
+}
+
+function getAllTiles() {
+	tiles = gameObject.GetComponentsInChildren(HUDTile);
+}
+
+function attachToolTilesFromInventory() {
+	
+	var inventoryTools = inventory.GetComponentsInChildren(GameTool);
+	
+	for(var gameTool : GameTool in inventoryTools) {
 		
+		var toolTile : ToolTile = gameTool.getToolTile();
+		
+		if(toolTile) {
+			toolTile.setTool(gameTool);
+			toolTile.transform.parent = gameObject.transform;
+		}
+		
+		
+	}
+	
+}
+
+function attachSlotsFromInventory() {
+	var inventorySlots = inventory.GetComponentsInChildren(InventorySlot);
+	
+	for(var inventorySlot : InventorySlot in inventorySlots) {
+		inventorySlot.transform.parent = gameObject.transform;
+	}
+}
+
+function attachSlotsFromSchematic() {
+	
+	var schematicSlotsInSchematic = schematic.GetComponentsInChildren(SchematicSlot);
+	
+	for(var schematicSlot : SchematicSlot in schematicSlotsInSchematic) {
+		
+		// attach the slot from the schematic to the schematic hud
+		schematicSlot.transform.parent = gameObject.transform;
+		
+	}
+	
 }
 
 function setSchematicSlots() {
@@ -248,22 +315,22 @@ function setSchematicSlots() {
 	currentY += (spaceBetweenSections + slotSize);
 	var i = 0;
 	
+	
+	var schematicSlots = getSchematicSlots();
+	
 	for(var slot : SchematicSlot in schematicSlots) {
 		
-		// set the location rectange for a single slot
-		slot.setLocationRect(currentX, currentY, slotSize);
-		slot.setLoosenOffset(loosenOffset);
-		
-		// if there's a piece in the current slot
-		if(!slot.isEmpty()) {
-		
-			slot.connectPiece();
+		// because inventory slot inherits from schematic slot
+		// it gets returned in GetComponenetsInChildren
+		if(slot.GetType() != InventorySlot) {
+			
+			// set the location rectange for a single slot
+			slot.setLocationRect(currentX, currentY, slotSize);
+			slot.setLoosenOffset(loosenOffset);
+			
+			currentX += (slotSize + spacing);
 			
 		}
-		
-		currentX += (slotSize + spacing);
-		tiles.Push(slot);
-		i++;
 		
 	}
 	
@@ -275,30 +342,15 @@ function setInventorySlots() {
 	currentY += (spaceBetweenSections + slotSize);
 	var i = 0;
 	
-	// iterate over the inventory slots and place all the pieces in those slots
-	for(var inventoryPiece : Piece in inventory.pieces) {
-		
-		Debug.Log('piece being added');
-		var slotForPiece = inventorySlots[i];
-		slotForPiece.placePiece(inventoryPiece);
-		inventorySlots[i] = slotForPiece;
-		i++;
-		
-	}
 	
-	// set all the slots
+	var inventorySlots = gameObject.GetComponentsInChildren(InventorySlot);
+	
 	for(var inventorySlot : InventorySlot in inventorySlots) {
-		
-		// set the location rect for the inventory slot
+	
 		inventorySlot.setLocationRect(currentX, currentY, slotSize);
-		
-		// update the current location
 		currentX += (slotSize + spacing);
 		
-		tiles.Push(inventorySlot);
-		
-	}
-	
+	}	
 	
 }
 
@@ -307,47 +359,31 @@ function setToolTiles() {
 	currentX = slotOrigin.x;
 	var i = 0;
 	
-	for(var gameTool : GameTool in inventory.hudTools) {
+	var toolTiles = gameObject.GetComponentsInChildren(ToolTile);
+	
+	for(var toolTile : ToolTile in toolTiles) {
 		
-		var toolTile = gameTool.getToolTile();
-		
-		if(toolTile) {
-			
-			toolTile.setTool(gameTool);
-			toolTile.setLocationRect(currentX, currentY, slotSize);
-			tiles.Push(toolTile);
-			currentX += (slotSize + spacing);
-			
-		}
+		toolTile.setLocationRect(currentX, currentY, slotSize);
+		currentX += (slotSize + spacing);
 		
 	}	
+	
 } 
 
-function placePieceInSlot(slot : SchematicSlot, piece: Piece) {
-
-	slot.placePiece(piece);
+/*
+function powerUpAllSchematicSlots() {
 	
-}
-
-function pickUpPieceFromSlot(slot : SchematicSlot) {
-
-	pickedUpPiece = null;
-	
-	if(slot) {
-	
-		pickedUpPiece = slot.pickUpPiece();
+	for (var tile : HUDTile in tiles) {
+		
+		if(tile.GetType() == SchematicSlot) {
+			var schematicSlot : SchematicSlot = tile;
+			schematicSlot.powerUp(schematicSlots, objectWithSchematic);
+		}
+		
 		
 	}
-	
-	return pickedUpPiece;
-	
-} 
-
-function isPiecePickedUp() {
-
-	return pickedUpPiece != null;
-	
 }
+*/
 
 
 
