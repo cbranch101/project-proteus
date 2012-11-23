@@ -15,18 +15,18 @@ class Pliers extends GameTool {
 	private var focusBarX : int;
 	private var endFailPoint;
 	private var startFailPoint;
-	private var focusDistance : float;
+	private var maxPressSpeed : float = 3.5;
+	private var minPressSpeed : float = 1.5;
+	private var pressSpeed : float;
+	private var workedOnTile : HUDTile;
+	
+	@System.NonSerialized
+	var picksUpPieceWhenFinishedWorking : boolean = true;
 	
 	
 	function useOnTile(tile : HUDTile) {
 		
-		if(tile.hasLoosenedPiece()) {
-			startWorkingOnTile(tile);
-			tile.tightenPiece();
-		} else {
-			startWorkingOnTile(tile);
-			tile.loosenPiece();
-		}
+		startWorkingOnTile(tile);
 		
 	}
 	
@@ -35,10 +35,13 @@ class Pliers extends GameTool {
 		startFailPoint = toolOrigin.x;
 		endFailPoint = toolOrigin.x + successBarWidth;
 		isFinishedWorking = false;
+		workedOnTile = tile;
 	}
 	
 	function resetWork() {
 		workProgress = 0;
+		lastPress = 0;
+		pressSpeed = 0;
 	}
 	
 	function draw() {
@@ -55,29 +58,96 @@ class Pliers extends GameTool {
 	}
 	
 	function updateToolHUD() {
-		pressInterval = Time.time - lastPress;
-		Debug.Log(pressInterval);
-		
-		focusBarX += focusDistance;
-		progressSpeed = endFailPoint  / (endFailPoint - focusBarX);
-		var distance = Time.deltaTime / (10 * progressSpeed);
-		currentProgress += distance;
-		
-		if(Input.GetKeyDown("j")) {
+		// if there's been a single press
+		if(lastPress > 0) {
 			
-			lastPress = Time.time;
+			// press speed is in clicks / second
+			// since we're updating the last press on every click
+			// this number always represent clicks per second
+			
+			if((pressSpeed <= maxPressSpeed) && (pressSpeed >= minPressSpeed)) {
+				
+				percentageToAdvance = pressSpeed / maxPressSpeed;
+				focusBarX = toolOrigin.x + (successBarWidth * percentageToAdvance);
+				
+				
+			} else {
+			
+				var isUnderMinSpeed = pressSpeed <= minPressSpeed;
+				
+				if(isUnderMinSpeed) {
+					
+					currentProgress = 0;
+					
+				} else {
+					
+					onFailure();
+					
+				}
+				
+			}
+			
+			progressSpeed = endFailPoint - focusBarX;
+			var distance = Time.deltaTime / (.05 * progressSpeed);
+			currentProgress += distance;
+			
+			if(currentProgress >= 1) {
+				
+				onSuccess();
+				
+			}
 			
 		}
+		
+			if(Input.GetKeyDown("j")) {
+				pressSpeed = 1 / (Time.time - lastPress);
+				updateFocusBarX();
+				lastPress = Time.time;
+				
+			}
 	}
 	
-	function getFocusDistance(pressInterval) {
+	function onSuccess() {
 		
-/*
-		absoluteDifference = optimalInterval - pressInterval;
-		percentageDifference = optimalInterval / percentageDifferce;
-		Debug.Log(percentageDifference);
-*/
-		focusDistance = (optimalInterval - pressInterval) * 5; 
+		if(workedOnTile.pieceIsLoosened) {
+			
+			workedOnTile.tightenPiece();
+			
+		} else {
+		
+			workedOnTile.loosenPiece();
+			
+		}
+		
+		finishWorking();
+		
+	}
+	
+	
+	function onFailure() {
+		if(!workedOnTile.isPieceLoosened) {
+			workedOnTile.loosenPiece();
+		}
+		
+		workedOnTile.breakCurrentPiece();
+		finishWorking();
+	}
+	
+	function updateFocusBarX() {
+		
+		speedRange = maxPressSpeed - minPressSpeed;
+/* 		Debug.Log(pressSpeed); */
+		
+	}
+	
+	function finishWorking() {
+		
+		isFinishedWorking = true;
+		var tileToPass : HUDTile = workedOnTile;
+		workedOnTile = null;
+		playerHand.onToolFinishedWorking(tileToPass);
+		resetWork();
+		
 	}
 	
 }

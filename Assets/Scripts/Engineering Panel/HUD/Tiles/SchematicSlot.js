@@ -3,11 +3,70 @@ class SchematicSlot extends HUDTile {
 	
 	var emptyTexture : Texture;
 	var piece : Piece;
-	private var pieceIsLoosened = false;
-	private var loosenOffset : int = 0;
+	
+	protected var loosenOffset : int = 0;
 	var fixedRemovalChance : float = 10.0;
 	var brokenPiece : Piece;
+	var allowedPiece : Piece;
+	var requiredSlots : SchematicSlot[];
+	
+	@System.NonSerialized
+	var canPowerUp = false;
+	
+	@System.NonSerialized
+	protected var isProcessed = false;
+				
+	
+	/**
+	 * runDiagnostic function.
+	 * 
+	 * Peforms all of the final checks necessary before powering up a slot
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	function runDiagnostic() {
+		correctPieceIsFirmlyConnected();
+	}
+	
+	function correctPieceIsFirmlyConnected() {
+/* 		Debug.Log(piece); */
+	}
+	
+	function currentPieceIsAllowed() {
+		return piece.GetType() == allowedPiece.GetType();
+	}
+	
+	function powerUp(allSchematicSlots : SchematicSlot[], objectWithSchematic : GameObject) {
+		allSchematicSlots = powerUpRequiredSlots(allSchematicSlots, objectWithSchematic);
+		runDiagnostic();
+		allSchematicSlots = onPowerUp(allSchematicSlots, objectWithSchematic);
+		return allSchematicSlots;
+	}
+	
+	function onPowerUp(allSchematicSlots : SchematicSlot[], objectWithSchematic : GameObject) {
+		return allSchematicSlots;
+	}
+	
+	function powerUpRequiredSlots(allSchematicSlots : SchematicSlot[], objectWithSchematic : GameObject) : SchematicSlot[] {		
+		
+		for (var requiredSlot : SchematicSlot in requiredSlots) {
+			for(var schematicSlot : SchematicSlot in allSchematicSlots) {
+				if(requiredSlot.GetType() == schematicSlot.GetType()) {
+					if(!schematicSlot.isProcessed) {
+					
+						allSchematicSlots = schematicSlot.powerUp(allSchematicSlots, objectWithSchematic);
+						
+					} 
+				}
+			}
 			
+		}
+		
+		return allSchematicSlots;
+		
+	}  
+	
 	function setTextureToDraw() {
 		
 		if(piece) {
@@ -110,6 +169,22 @@ class SchematicSlot extends HUDTile {
 		
 	}
 	
+	function breakCurrentPiece() {
+		
+		if(piece) {
+			
+			// take out the current piece
+			piece.takeOutOfSlot();
+			
+			// set the current piece as the broken piece
+			piece = brokenPiece;
+			
+			// put this new piece back in the slot
+			piece.putInSlot(this);
+		}
+		
+	}
+	
 	function loosenPiece() {
 		if(piece) {
 			pieceIsLoosened = true;
@@ -125,7 +200,8 @@ class SchematicSlot extends HUDTile {
 	}
 	
 	function placePiece(pieceToPlace : Piece) {
-	
+		
+		
 		piece = pieceToPlace;
 		putPieceInSlot(pieceToPlace);
 		
@@ -155,18 +231,13 @@ class SchematicSlot extends HUDTile {
 	
 	function tryToPickUpPiece() {
 		
-		if(removalIsSuccessful()) {
-			
-			var pickedUpPiece : Piece = pickUpPiece();
-			return pickedUpPiece;
-			
-		} else {
-		
-			piece = null;
-			return brokenPiece;
-			
+		if(!removalIsSuccessful()) {
+			breakCurrentPiece();
 		}
 		
+		var pickedUpPiece : Piece = pickUpPiece();
+				
+		return pickedUpPiece;
 	}
 	
 	function hasLoosenedPiece() {

@@ -5,7 +5,7 @@ var spacing = 10;
 var spaceBetweenSections : int = 15;
 var inventory : Inventory;
 var inventorySlots : InventorySlot[];
-private var schematicSlots: SchematicSlot[];
+private var schematicSlots: Component[];
 private var tiles = new Array();
 var slotSize: int = 40;
 private var toolOrigin : Vector2;
@@ -19,8 +19,7 @@ private var currentX : int;
 private var currentY : int;
 public var loosenOffset : int = 10;
 var playerHand : PlayerHand;
-private var lastClick : float = 0;
-private var clickInterval : float = 1.0;
+private var objectWithSchematic : GameObject;
 
 
 /**
@@ -32,8 +31,9 @@ private var clickInterval : float = 1.0;
  * @param newSchematic : Schematic
  * @return void
  */
-function showHudForSchematic(newSchematic : Schematic) {
+function showHudForSchematic(newSchematic : Schematic, newObjectWithSchematic : GameObject) {
 	
+	objectWithSchematic = newObjectWithSchematic;
 	schematic = newSchematic;
 	slotOrigin = new Vector2(Screen.width / 2, Screen.height / 2);
 	toolOrigin = new Vector2(slotOrigin.x, slotOrigin.y - 50);
@@ -44,17 +44,25 @@ function showHudForSchematic(newSchematic : Schematic) {
 
 
 function setToolOriginInPlayerHand() {
+	
 	playerHand.setToolOrigin(toolOrigin);
+	
 }
 
-function FixedUpdate() {
+function Update() {
+
 	updateToolHUDInPlayerHand();
+	
 }
 
 function updateToolHUDInPlayerHand() {
+
 	if(playerHand.toolIsWorking) {
+	
 		playerHand.updateToolHUD();
+		
 	}
+	
 }
 
 function OnGUI() {
@@ -85,7 +93,9 @@ function draw() {
 
 
 function drawPlayerHand() {
+
 	playerHand.draw(mousePos);
+	
 }
 
 
@@ -99,8 +109,8 @@ function drawPlayerHand() {
  * @return void
  */
 function handleClicks() {
+
 	setMousePosition();
-	
 	
 	if(!playerHand.toolIsWorking) {
 		handleHUDClicks();
@@ -109,13 +119,14 @@ function handleClicks() {
 }
 
 function handleHUDClicks() {
+
 		var mouseEvent : String = null;
 		var mousedOverTile = getMousedOverTile(mousePos);
+		
 		if(leftMouseWentDown()) { 
 			
 			mouseEvent = 'left_mouse_went_down';
-			
-			lastClick = Time.deltaTime;
+						
 			if(mousedOverTile != null) {
 			
 				playerHand.manipulateTile(mousedOverTile, mouseEvent);
@@ -143,10 +154,13 @@ function handleHUDClicks() {
 			}
 			
 		}
+		
 }
 
-function handleKeyPressesWhileToolHUDIsOpen() {
-	
+function tryToActiveAllSlots() {
+
+		
+
 }
 
 function leftMouseWentDown() {
@@ -228,9 +242,11 @@ function drawTiles() {
  * @return void
  */
 function setTiles() {
+
+	
 	
 	schematicSlots = schematic.slots;
-	
+	attachSlotsFromSchematicToSchematicHUD();
 	// set the current X and Y from the slot Origin
 	// to move from slot to slot and draw the HUD
 	currentX = slotOrigin.x;
@@ -240,6 +256,21 @@ function setTiles() {
 	setSchematicSlots();
 	setInventorySlots();
 		
+}
+
+
+
+function attachSlotsFromSchematicToSchematicHUD() {
+	
+	var schematicSlotsInSchematic = schematic.GetComponentsInChildren(SchematicSlot);
+	
+	for(var schematicSlot : SchematicSlot in schematicSlotsInSchematic) {
+		
+		// attach the slot from the schematic to the schematic hud
+		schematicSlot.transform.parent = gameObject.transform;
+		
+	}
+	
 }
 
 function setSchematicSlots() {
@@ -278,7 +309,6 @@ function setInventorySlots() {
 	// iterate over the inventory slots and place all the pieces in those slots
 	for(var inventoryPiece : Piece in inventory.pieces) {
 		
-		Debug.Log('piece being added');
 		var slotForPiece = inventorySlots[i];
 		slotForPiece.placePiece(inventoryPiece);
 		inventorySlots[i] = slotForPiece;
@@ -321,32 +351,20 @@ function setToolTiles() {
 		}
 		
 	}	
+	
 } 
 
-function placePieceInSlot(slot : SchematicSlot, piece: Piece) {
-
-	slot.placePiece(piece);
+function powerUpAllSchematicSlots() {
 	
-}
-
-function pickUpPieceFromSlot(slot : SchematicSlot) {
-
-	pickedUpPiece = null;
-	
-	if(slot) {
-	
-		pickedUpPiece = slot.pickUpPiece();
+	for (var tile : HUDTile in tiles) {
+		
+		if(tile.GetType() == SchematicSlot) {
+			var schematicSlot : SchematicSlot = tile;
+			schematicSlot.powerUp(schematicSlots, objectWithSchematic);
+		}
+		
 		
 	}
-	
-	return pickedUpPiece;
-	
-} 
-
-function isPiecePickedUp() {
-
-	return pickedUpPiece != null;
-	
 }
 
 

@@ -4,6 +4,10 @@ protected var locationRect : Rect;
 protected var textureToDraw : Texture;
 protected var size;
 
+@System.NonSerialized
+var pieceIsLoosened = false;
+
+
 function setLocationRect(x : int, y : int, mySize : int) {
 	size = mySize;
 	locationRect = new Rect(x, y, size, size);
@@ -53,6 +57,10 @@ function tightenPiece() {
 function hasLoosenedPiece() {
 
 	return false;
+}
+
+function breakCurrentPiece() {
+	
 }
 
 

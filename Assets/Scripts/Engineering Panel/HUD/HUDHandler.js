@@ -17,17 +17,20 @@ function toggleCameraAndControlFunction() {
 	}
 }
 
-function showHUD(schematic : Schematic) {
+function showHUD(schematic : Schematic, objectWithSchematic : GameObject) {
 	
 	toggleCameraAndControlFunction();
 	schematicHud.enabled = true;
-	schematicHud.showHudForSchematic(schematic);	
+	schematicHud.showHudForSchematic(schematic, objectWithSchematic);	
 	
 }
 
 function hideHUD() {
+	
+	schematicHud.powerUpAllSchematicSlots();
 	toggleCameraAndControlFunction();
 	schematicHud.enabled = false;
+	
 }
 
 

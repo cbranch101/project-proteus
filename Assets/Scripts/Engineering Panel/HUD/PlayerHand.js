@@ -24,6 +24,7 @@ function setToolOrigin(newToolOrigin : Vector2) {
 	
 }
 
+
 function updateToolHUD() {
 	selectedTool.updateToolHUD();
 }
@@ -56,11 +57,7 @@ function manipulateTile(tile : HUDTile, mouseEvent : String) {
 			
 		} else {
 		
-			if(tile.GetType() == SchematicSlot) {
-				manipulateSchematicSlot(tile, mouseEvent);
-			} else {
-				
-			} 
+			manipulateSchematicSlot(tile, mouseEvent);
 			
 			
 		}
@@ -110,6 +107,33 @@ function manipulateInventorySlot(inventorySlot : HUDTile, mouseEvent : String) {
 		
 }
 
+function onToolFinishedWorking(slot : SchematicSlot) {
+		
+		if(selectedTool.picksUpPieceWhenFinishedWorking) {
+			
+			if(slot.pieceIsLoosened) {
+				
+				pickUpPieceFromTile(slot);
+				
+			}	
+			
+		}
+		
+		toolIsWorking = false;
+		selectedTool = null;
+	
+}
+
+function pickUpPieceFromTile(tile : HUDTile) {
+	
+	pickedUpPiece = tile.tryToPickUpPiece();
+	
+	// if there a piece was picked up, store if for later
+	if(pickedUpPiece) {
+		lastTileForPickedUpPiece = tile;
+	}
+}
+
 function manipulateSchematicSlot(schematicSlot : HUDTile, mouseEvent : String) {
 	if(leftMouseWentDown(mouseEvent)) {
 		
@@ -119,26 +143,12 @@ function manipulateSchematicSlot(schematicSlot : HUDTile, mouseEvent : String) {
 			
 				useSelectedToolOnTile(schematicSlot);
 				
-				if(selectedTool.isFinishedWorking) {
-				
-					selectedTool = null;
-					
-				} else {
-					
-					toolIsWorking = true;
-					
-				}
-				
+				toolIsWorking = true;
+								
 			} else {
 									
 					
-				pickedUpPiece = schematicSlot.tryToPickUpPiece();
-				
-				// if there a piece was picked up, store if for later
-				if(pickedUpPiece) {
-					lastTileForPickedUpPiece = schematicSlot;
-				}
-				
+				pickUpPieceFromTile(schematicSlot);
 				
 			}
 			
@@ -183,17 +193,13 @@ function onLeftMouseDown(tile : HUDTile) {
 	
 	if(!pickedUpPiece) {
 		
-		Debug.Log('starting frame');	
 		var toolFromTile : GameTool = tile.getTool();
 		
 		if(toolFromTile) {
 				
 			if(!selectedTool) {
-				Debug.Log('no piece found');
+				
 				// if there's a tool in the current tile
-					
-				Debug.Log('selecting tool');
-				Debug.Log(toolFromTile);
 				
 				// select the tool
 				selectedTool = toolFromTile;
@@ -208,9 +214,6 @@ function onLeftMouseDown(tile : HUDTile) {
 			// if you're clicking on an inventory or schematic slot with a selected tool
 			if(selectedTool) {
 				
-				Debug.Log('using tool');
-				Debug.Log(selectedTool);
-				Debug.Log(tile);
 				
 				// use the tool
 				useSelectedToolOnTile(tile);
@@ -227,8 +230,6 @@ function onLeftMouseDown(tile : HUDTile) {
 				
 				if(allowPickUp) {
 					
-					Debug.Log('trying to pick up');
-					Debug.Log(tile);
 					
 					pickedUpPiece = tile.tryToPickUpPiece();
 					if(pickedUpPiece) {

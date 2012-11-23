@@ -4,12 +4,17 @@ class GameTool extends MonoBehaviour {
 	
 	var schematicTexture : Texture;
 	var toolTile : ToolTile;
+	var playerHand : PlayerHand;
+
 	
 	@System.NonSerialized
 	var toolOrigin : Vector2;
 	
 	@System.NonSerialized
 	var isFinishedWorking : boolean = true;
+	
+	@System.NonSerialized
+	var picksUpPieceWhenFinishedWorking : boolean = false;
 		
 	function getToolTile() {
 		if(toolTile != null) {
@@ -33,6 +38,10 @@ class GameTool extends MonoBehaviour {
 	}
 	
 	function updateToolHUD() {
+		
+	}
+	
+	function finishWorking() {
 		
 	}
 	
