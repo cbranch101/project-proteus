@@ -2,7 +2,9 @@
 
 var texture : Texture;
 var brokenTexture : Texture;
-private var isBroken : boolean;
+
+@System.NonSerialized
+var isBroken : boolean;
 var isLoosened : boolean = false;
 
 
@@ -29,4 +31,5 @@ function loosen() {
 function tighten() {
 	isLoosened = false;
 }
+
 

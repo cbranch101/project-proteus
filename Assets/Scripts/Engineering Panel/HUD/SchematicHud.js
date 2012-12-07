@@ -5,7 +5,6 @@ var spacing = 10;
 var spaceBetweenSections : int = 15;
 var inventory : Inventory;
 var inventorySlots : InventorySlot[];
-private var schematicSlots: Component[];
 private var tiles : Component[];
 var slotSize: int = 40;
 private var toolOrigin : Vector2;
@@ -195,7 +194,6 @@ function getMousedOverTile(mousePos : Vector2) {
 	
 	// set the mousedOverSlot as null if nothing is found
 	var mousedOverTile : HUDTile = null;
-	
 	// iterate over the slots
 	for(var tile : HUDTile in tiles) {	
 		
@@ -246,7 +244,6 @@ function setTiles() {
 
 	
 	
-	schematicSlots = schematic.slots;
 	attachSlotsFromSchematic();
 	attachSlotsFromInventory();
 	attachToolTilesFromInventory();
@@ -259,11 +256,43 @@ function setTiles() {
 	setSchematicSlots();
 	setInventorySlots();
 	getAllTiles();
-			
 }
 
 function getSchematicSlots() {
-	return gameObject.GetComponentsInChildren(SchematicSlot);
+	
+	
+	var i = 0;
+	var schematicSlotCount = 0;
+	
+	var inventoryOrSchematicSlots =  gameObject.GetComponentsInChildren(SchematicSlot);
+	
+	for (var inventoryOrSchematicSlot : SchematicSlot in inventoryOrSchematicSlots) {
+		
+		// only get the schematic slots
+		if(inventoryOrSchematicSlot.GetType() != InventorySlot) {
+			
+			schematicSlotCount++;
+			
+		}
+		
+	}
+	
+	var schematicSlots : SchematicSlot[] = new SchematicSlot[schematicSlotCount];
+	
+	for (var inventoryOrSchematicSlot : SchematicSlot in inventoryOrSchematicSlots) {
+		
+		// only get the schematic slots
+		if(inventoryOrSchematicSlot.GetType() != InventorySlot) {
+			
+			schematicSlots[i] = inventoryOrSchematicSlot;
+			i++;
+			
+		}
+		
+	}
+	
+	return schematicSlots;
+	
 }
 
 function getAllTiles() {
@@ -319,7 +348,7 @@ function setSchematicSlots() {
 	var schematicSlots = getSchematicSlots();
 	
 	for(var slot : SchematicSlot in schematicSlots) {
-		
+			
 		// because inventory slot inherits from schematic slot
 		// it gets returned in GetComponenetsInChildren
 		if(slot.GetType() != InventorySlot) {
@@ -360,7 +389,7 @@ function setToolTiles() {
 	var i = 0;
 	
 	var toolTiles = gameObject.GetComponentsInChildren(ToolTile);
-	
+
 	for(var toolTile : ToolTile in toolTiles) {
 		
 		toolTile.setLocationRect(currentX, currentY, slotSize);
@@ -370,20 +399,16 @@ function setToolTiles() {
 	
 } 
 
-/*
 function powerUpAllSchematicSlots() {
 	
-	for (var tile : HUDTile in tiles) {
+	var schematicSlots = getSchematicSlots();
+	
+	for (var schematicSlot : SchematicSlot in schematicSlots) {
 		
-		if(tile.GetType() == SchematicSlot) {
-			var schematicSlot : SchematicSlot = tile;
-			schematicSlot.powerUp(schematicSlots, objectWithSchematic);
-		}
-		
+		schematicSlot.powerUp(this, objectWithSchematic);
 		
 	}
 }
-*/
 
 
 

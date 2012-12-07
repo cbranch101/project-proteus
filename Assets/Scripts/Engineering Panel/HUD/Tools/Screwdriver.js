@@ -6,7 +6,7 @@ class Screwdriver extends GameTool {
 	private var objectIsOpen;
 				
 	function Update() {
-		if(Input.GetKeyDown('e')) {
+		if(Input.GetKeyDown('r')) {
 			if(!objectIsOpen) {
 				tryToOpenObject();	
 			} else {

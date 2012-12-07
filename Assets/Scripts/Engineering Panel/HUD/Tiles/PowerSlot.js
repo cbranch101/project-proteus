@@ -1,7 +1,12 @@
 class PowerSlot extends SchematicSlot {
 	
-	function onPowerUp(allSchematicSlots : SchematicSlot[], objectWithSchematic : GameObject) {
-		objectWithSchematic.SendMessage("setOnMaterial");
+	function onPowerUp(requiredSlots, objectWithSchematic : GameObject) {
+		Debug.Log(objectWithSchematic);
+		objectWithSchematic.SendMessage('onPowerUp');
+	}
+	
+	function onPowerDown(requiredSlots, objectWithSchematic : GameObject) {
+		objectWithSchematic.SendMessage('onPowerDown');
 	}
 	
 }

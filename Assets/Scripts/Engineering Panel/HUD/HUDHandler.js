@@ -27,7 +27,7 @@ function showHUD(schematic : Schematic, objectWithSchematic : GameObject) {
 
 function hideHUD() {
 	
-/* 	schematicHud.powerUpAllSchematicSlots(); */
+	schematicHud.powerUpAllSchematicSlots();
 	toggleCameraAndControlFunction();
 	schematicHud.enabled = false;
 	

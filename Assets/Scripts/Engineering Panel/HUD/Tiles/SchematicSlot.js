@@ -2,19 +2,19 @@
 class SchematicSlot extends HUDTile {
 	
 	var emptyTexture : Texture;
-	var piece : Piece;
 	
 	protected var loosenOffset : int = 0;
 	var fixedRemovalChance : float = 10.0;
 	var brokenPiece : Piece;
 	var allowedPiece : Piece;
-	var requiredSlots : SchematicSlot[];
-	
+	var requiredSlotTypes : SchematicSlot[];
+		
 	@System.NonSerialized
-	var canPowerUp = false;
+	protected var attemptedPowerUp = false;
+	protected var canPowerUp = false;
+	protected var allRequiredSlotsCanPowerUp = true;
+	protected var isPoweredUp : boolean = false;
 	
-	@System.NonSerialized
-	protected var isProcessed = false;
 				
 	
 	function getPiece() {
@@ -36,53 +36,94 @@ class SchematicSlot extends HUDTile {
 	 * @access public
 	 * @return void
 	 */
-	function runDiagnostic() {
-		correctPieceIsFirmlyConnected();
+	function slotCanPowerUp() {
+		piece = getPiece();	
+		return piece ? pieceCanPowerUp(piece) : false;
 	}
 	
-		
-	function correctPieceIsFirmlyConnected() {
-/* 		Debug.Log(piece); */
+	function pieceCanPowerUp(piece : Piece) {
+		return !piece.isLoosened ? pieceIsWorking(piece) : false;
 	}
 	
-	function currentPieceIsAllowed() {
-		piece = getPiece();
+			
+	function pieceIsWorking(piece : Piece) {
+		return !piece.isBroken ? pieceIsAllowed(piece) : false;
+	}
+	
+	function pieceIsAllowed(piece : Piece) {
 		return piece.GetType() == allowedPiece.GetType();
 	}
 	
-	function powerUp(allSchematicSlots : SchematicSlot[], objectWithSchematic : GameObject) {
-		allSchematicSlots = powerUpRequiredSlots(allSchematicSlots, objectWithSchematic);
-		runDiagnostic();
-		allSchematicSlots = onPowerUp(allSchematicSlots, objectWithSchematic);
-		return allSchematicSlots;
-	}
-	
-	function onPowerUp(allSchematicSlots : SchematicSlot[], objectWithSchematic : GameObject) {
-		return allSchematicSlots;
-	}
-	
-	function powerUpRequiredSlots(allSchematicSlots : SchematicSlot[], objectWithSchematic : GameObject) : SchematicSlot[] {		
+	function powerUp(schematicHud, objectWithSchematic : GameObject) {
+		this.attemptedPowerUp = true;
+		var requiredSlots = getRequiredSlots(schematicHud, objectWithSchematic);
 		
-		for (var requiredSlot : SchematicSlot in requiredSlots) {
+		if(slotCanPowerUp() && allRequiredSlotsCanPowerUp) {
+			
+			isPoweredUp = true;
+			onPowerUp(requiredSlots, objectWithSchematic);
+			
+		} else {
+			
+			if(isPoweredUp) {
+				onPowerDown(requiredSlots, objectWithSchematic);
+			}
+			
+			isPoweredUp = false;
+			
+		}
+		
+	}
+	
+	function onPowerUp(requiredSlots, objectWithSchematic : GameObject) {
+	}
+		
+	function getRequiredSlots(schematicHud : SchematicHud, objectWithSchematic : GameObject) {
+		var i = 0;
+		var requiredSlots = new Hashtable();
+		
+		for (var requiredSlotType : SchematicSlot in requiredSlotTypes) {
+			requiredSlot = schematicHud.GetComponentInChildren(requiredSlotType.GetType());
+			if(!requiredSlot.attemptedPowerUp) {
+				
+				requiredSlot.powerUp(schematicHud, objectWithSchematic);
+				
+				if(allRequiredSlotsCanPowerUp) {
+					allRequiredSlotsCanPowerUp = requiredSlot.slotCanPowerUp();
+				}
+				
+			}
+			requiredSlots[requiredSlot.GetType()] = requiredSlot;
+			i++;
+		}
+		
+		return requiredSlots;
+		
+	}
+	
+/*
+	function powerUpRequiredSlots(schematicHud : SchematicHud, objectWithSchematic : GameObject) {		
+		
+		for (var requiredSlot : SchematicSlot in requiredSlotTypes) {
+			
 			for(var schematicSlot : SchematicSlot in allSchematicSlots) {
 				if(requiredSlot.GetType() == schematicSlot.GetType()) {
-					if(!schematicSlot.isProcessed) {
-					
-						allSchematicSlots = schematicSlot.powerUp(allSchematicSlots, objectWithSchematic);
+					if(!schematicSlot.attemptedPowerUp) {
+						
+						schematicSlot.powerUp(allSchematicSlots, objectWithSchematic);
 						
 					} 
 				}
 			}
 			
 		}
-		
-		return allSchematicSlots;
-		
+				
 	}  
+*/
 	
 	function setTextureToDraw() {
 		
-		piece = getPiece();
+		var piece = getPiece();
 		
 		if(piece) {
 		
@@ -106,7 +147,7 @@ class SchematicSlot extends HUDTile {
 	
 	function isEmpty() {
 	
-		return piece == null;
+		return getPiece() == null;
 		
 	}
 		
@@ -191,6 +232,8 @@ class SchematicSlot extends HUDTile {
 	
 	function breakCurrentPiece() {
 		
+		var piece : Piece = getPiece();
+		
 		if(piece) {
 			
 			// take out the current piece
@@ -201,13 +244,17 @@ class SchematicSlot extends HUDTile {
 	}
 	
 	function loosenPiece() {
-		if(getPiece()) {
+		var piece : Piece = getPiece();
+		if(piece) {
 			piece.isLoosened = true;
 		}
 	}
 	
 	function tightenPiece() {
-		if(getPiece()) {
+		
+		var piece : Piece = getPiece();
+		
+		if(piece) {
 			piece.isLoosened = false;
 		}
 		
@@ -237,17 +284,11 @@ class SchematicSlot extends HUDTile {
 		return pickedUpPiece;
 	}
 	
-	function hasLoosenedPiece() {
-	
-		var hasPiece : boolean = piece != null ? true : false;
-		if(hasPiece && pieceIsLoosened) {
-			return true;
-		} else {
-			return false;
-		}
+	function onPowerDown(requiredSlots, objectWithSchematic : GameObject) {
 		
 	}
 
+	
 		
 }
 
