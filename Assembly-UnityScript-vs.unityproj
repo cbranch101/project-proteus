@@ -46,6 +46,8 @@
   <ItemGroup>
      <Compile Include="Assets\ControlPiece.js" />
      <Compile Include="Assets\ControlSlot.js" />
+     <Compile Include="Assets\Cube.js" />
+     <Compile Include="Assets\DoorPanel.js" />
      <Compile Include="Assets\GUI\Crosshair.js" />
      <Compile Include="Assets\MaterialChanger.js" />
      <Compile Include="Assets\Misc Scripts\DisableComponentOnPause.js" />
@@ -59,8 +61,7 @@
      <Compile Include="Assets\Misc Scripts\MusicPlayer.js" />
      <Compile Include="Assets\Misc Scripts\Visibility Culling\VisibilityCuller.js" />
      <Compile Include="Assets\Misc Scripts\Visibility Culling\VisibilityCullingArea.js" />
-     <Compile Include="Assets\Scripts\BuildPoint\BuildPoint.js" />
-     <Compile Include="Assets\Scripts\BuildPoint\Switch.js" />
+     <Compile Include="Assets\PowerHandler.js" />
      <Compile Include="Assets\Scripts\Engineering Panel\GUISlot.js" />
      <Compile Include="Assets\Scripts\Engineering Panel\HUD\HUDHandler.js" />
      <Compile Include="Assets\Scripts\Engineering Panel\HUD\MyGui.js" />
@@ -79,7 +80,9 @@
      <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tools\Pliers.js" />
      <Compile Include="Assets\Scripts\Engineering Panel\HUD\Tools\Screwdriver.js" />
      <Compile Include="Assets\Scripts\Inventory.js" />
+     <Compile Include="Assets\Scripts\LightSwitch.js" />
      <Compile Include="Assets\Scripts\ModifiedCharacterController.js" />
+     <Compile Include="Assets\Scripts\Switch.js" />
      <Compile Include="Assets\Scripts\TestScripts\HolderObject.js" />
      <None Include="Assets\Standard Assets\Particles\Sources\Shaders\Particle Alpha Blend (Queue +100).shader" />
  <Reference Include="Assembly-UnityScript-firstpass">
