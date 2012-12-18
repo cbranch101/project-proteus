@@ -5,7 +5,8 @@ class GameTool extends MonoBehaviour {
 	var schematicTexture : Texture;
 	var toolTile : ToolTile;
 	var playerHand : PlayerHand;
-
+	protected var equippable : boolean = false;
+	
 	
 	@System.NonSerialized
 	var toolOrigin : Vector2;
@@ -16,6 +17,10 @@ class GameTool extends MonoBehaviour {
 	@System.NonSerialized
 	var picksUpPieceWhenFinishedWorking : boolean = false;
 		
+	function isEquippable() {
+		return equippable;
+	}
+	
 	function getToolTile() {
 		if(toolTile != null) {
 			return toolTile;
