@@ -3,7 +3,9 @@ guid: 7ee7f41eaf964864a9ba351c4c0a795d
 ModelImporter:
   fileIDToRecycleName:
     4300000: Door_Top
+    4300002: Door_Top001
     7400000: ConcreteWall_01 //// Door
+    7400002: Blocking Level //// Door
   serializedVersion: 10
   materials:
     importMaterials: 1
@@ -21,7 +23,7 @@ ModelImporter:
     clipAnimations: []
   meshes:
     lODScreenPercentages: []
-    globalScale: .00999999978
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     swapUVChannels: 0
@@ -48,56 +50,70 @@ ModelImporter:
       data:
         first: 111
         second: 605fa900
-    BN_Door_1:
+    BN_Door_010:
       data:
         first: 1
-        second: ae860100
+        second: b4860100
       data:
         first: 4
-        second: 8e1a0600
-    BN_Door_2:
-      data:
-        first: 1
-        second: aa860100
-      data:
-        first: 4
-        second: 8a1a0600
-    BN_Door_3:
+        second: 941a0600
+    BN_Door_011:
       data:
         first: 1
         second: a4860100
       data:
         first: 4
         second: 841a0600
-    BN_Door_4:
-      data:
-        first: 1
-        second: a2860100
-      data:
-        first: 4
-        second: 821a0600
-    BN_Door_5:
+    BN_Door_012:
       data:
         first: 1
         second: a8860100
       data:
         first: 4
         second: 881a0600
-    BN_Door_6:
+    BN_Door_013:
       data:
         first: 1
         second: a0860100
       data:
         first: 4
         second: 801a0600
-    BN_Door_7:
+    BN_Door_014:
       data:
         first: 1
         second: a6860100
       data:
         first: 4
         second: 861a0600
-    Door_Top:
+    BN_Door_015:
+      data:
+        first: 1
+        second: aa860100
+      data:
+        first: 4
+        second: 8a1a0600
+    BN_Door_016:
+      data:
+        first: 1
+        second: b2860100
+      data:
+        first: 4
+        second: 921a0600
+    BN_Door_017:
+      data:
+        first: 1
+        second: ae860100
+      data:
+        first: 4
+        second: 8e1a0600
+    BN_Door_018:
+      data:
+        first: 1
+        second: a2860100
+      data:
+        first: 4
+        second: 821a0600
+    Door_Top001:
       data:
         first: 1
         second: ac860100
@@ -107,3 +123,10 @@ ModelImporter:
       data:
         first: 137
         second: a00bd100
+    Dummy002:
+      data:
+        first: 1
+        second: b6860100
+      data:
+        first: 4
+        second: 961a0600
