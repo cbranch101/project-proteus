@@ -35,7 +35,9 @@ function simulateBullet() {
 	var bulletRay : Ray = mainCamera.ViewportPointToRay (Vector3(0.5,0.5,0));
 	var hit : RaycastHit;
 	if (Physics.Raycast(bulletRay, hit)) {
-		Debug.Log(hit.collider.gameObject);
+		if(hit.collider.gameObject.name == "Head") {
+			hit.collider.gameObject.transform.parent.gameObject.SetActive(false);
+		}
 	}
 }
 
