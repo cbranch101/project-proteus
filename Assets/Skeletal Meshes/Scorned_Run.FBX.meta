@@ -1,0 +1,962 @@
+fileFormatVersion: 2
+guid: 06c47bfc1bd7e1a4585a987878c05c69
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Hua
+    100002: Hua Head
+    100004: Hua L Calf
+    100006: Hua L Clavicle
+    100008: Hua L Finger0
+    100010: Hua L Finger01
+    100012: Hua L Finger02
+    100014: Hua L Finger1
+    100016: Hua L Finger11
+    100018: Hua L Finger12
+    100020: Hua L Finger2
+    100022: Hua L Finger21
+    100024: Hua L Finger22
+    100026: Hua L Finger3
+    100028: Hua L Finger31
+    100030: Hua L Finger32
+    100032: Hua L Finger4
+    100034: Hua L Finger41
+    100036: Hua L Finger42
+    100038: Hua L Foot
+    100040: Hua L Forearm
+    100042: Hua L Hand
+    100044: Hua L Thigh
+    100046: Hua L Toe0
+    100048: Hua L UpperArm
+    100050: Hua Lower Body Mark 7 Render001
+    100052: Hua Neck
+    100054: Hua Pelvis
+    100056: Hua R Calf
+    100058: Hua R Clavicle
+    100060: Hua R Finger0
+    100062: Hua R Finger01
+    100064: Hua R Finger02
+    100066: Hua R Finger1
+    100068: Hua R Finger11
+    100070: Hua R Finger12
+    100072: Hua R Finger2
+    100074: Hua R Finger21
+    100076: Hua R Finger22
+    100078: Hua R Finger3
+    100080: Hua R Finger31
+    100082: Hua R Finger32
+    100084: Hua R Finger4
+    100086: Hua R Finger41
+    100088: Hua R Finger42
+    100090: Hua R Foot
+    100092: Hua R Forearm
+    100094: Hua R Hand
+    100096: Hua R Thigh
+    100098: Hua R Toe0
+    100100: Hua R UpperArm
+    100102: Hua Spine
+    100104: Hua Spine1
+    100106: Hua Spine2
+    100108: //RootNode
+    400000: Hua
+    400002: Hua Head
+    400004: Hua L Calf
+    400006: Hua L Clavicle
+    400008: Hua L Finger0
+    400010: Hua L Finger01
+    400012: Hua L Finger02
+    400014: Hua L Finger1
+    400016: Hua L Finger11
+    400018: Hua L Finger12
+    400020: Hua L Finger2
+    400022: Hua L Finger21
+    400024: Hua L Finger22
+    400026: Hua L Finger3
+    400028: Hua L Finger31
+    400030: Hua L Finger32
+    400032: Hua L Finger4
+    400034: Hua L Finger41
+    400036: Hua L Finger42
+    400038: Hua L Foot
+    400040: Hua L Forearm
+    400042: Hua L Hand
+    400044: Hua L Thigh
+    400046: Hua L Toe0
+    400048: Hua L UpperArm
+    400050: Hua Lower Body Mark 7 Render001
+    400052: Hua Neck
+    400054: Hua Pelvis
+    400056: Hua R Calf
+    400058: Hua R Clavicle
+    400060: Hua R Finger0
+    400062: Hua R Finger01
+    400064: Hua R Finger02
+    400066: Hua R Finger1
+    400068: Hua R Finger11
+    400070: Hua R Finger12
+    400072: Hua R Finger2
+    400074: Hua R Finger21
+    400076: Hua R Finger22
+    400078: Hua R Finger3
+    400080: Hua R Finger31
+    400082: Hua R Finger32
+    400084: Hua R Finger4
+    400086: Hua R Finger41
+    400088: Hua R Finger42
+    400090: Hua R Foot
+    400092: Hua R Forearm
+    400094: Hua R Hand
+    400096: Hua R Thigh
+    400098: Hua R Toe0
+    400100: Hua R UpperArm
+    400102: Hua Spine
+    400104: Hua Spine1
+    400106: Hua Spine2
+    400108: //RootNode
+    4300000: Hua Lower Body Mark 7 Render001
+    7400000: Scorned_Run
+    9500000: //RootNode
+    13700000: Hua Lower Body Mark 7 Render001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations:
+    - name: Scorned_Run
+      takeName: Filler.A.02
+      firstFrame: 1
+      lastFrame: 25
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 1
+      loopBlendOrientation: 1
+      loopBlendPositionY: 1
+      loopBlendPositionXZ: 1
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 0
+      keepOriginalPositionXZ: 1
+      heightFromFeet: 1
+      mirror: 0
+      keepAdditionalBonesAnimation: 1
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      skeletonMaskElements: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human:
+    - boneName: Hua Pelvis
+      humanName: Hips
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .15550755, y: 0, z: .0777537748}
+        preQ: {x: -.493444294, y: -.50647074, z: .493444294, w: .506470859}
+        postQ: {x: -5.96046448e-08, y: 1.43051159e-06, z: .999915123, w: .0130265066}
+        length: .1943845
+        modified: 1
+    - boneName: Hua L Thigh
+      humanName: LeftUpperLeg
+      limit:
+        min: {x: -60.0000038, y: -60.0000038, z: -90}
+        max: {x: 60.0000038, y: 60.0000038, z: 50}
+        value: {x: .32635355, y: 0, z: .163176775}
+        preQ: {x: .969110966, y: .241786927, z: .047164727, w: -.0117679518}
+        postQ: {x: -5.96046412e-08, y: .00484409882, z: -.999988258, w: 2.98023206e-08}
+        length: .407942086
+        modified: 1
+    - boneName: Hua R Thigh
+      humanName: RightUpperLeg
+      limit:
+        min: {x: -60.0000038, y: -60.0000038, z: -90}
+        max: {x: 60.0000038, y: 60.0000038, z: 50}
+        value: {x: .326353431, y: 0, z: .163176715}
+        preQ: {x: .969110906, y: .241787031, z: -.0471646972, w: .0117667131}
+        postQ: {x: -1.49011598e-07, y: -.0048426385, z: -.999988258, w: 5.96046412e-08}
+        length: .407941937
+        modified: 1
+    - boneName: Hua L Calf
+      humanName: LeftLowerLeg
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: .39525649, y: 0, z: .197628245}
+        preQ: {x: .00309517863, y: .0661859736, z: -.765159488, w: .640422225}
+        postQ: {x: -0, y: .00493626297, z: -.999987781, w: -1.49011612e-08}
+        length: .494070739
+        modified: 1
+    - boneName: Hua R Calf
+      humanName: RightLowerLeg
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: .39525646, y: 0, z: .19762823}
+        preQ: {x: -.00309442542, y: -.0661853403, z: -.765159667, w: .640422165}
+        postQ: {x: -8.94069814e-08, y: -.00493484782, z: -.999987781, w: 2.98023259e-08}
+        length: .494070709
+        modified: 1
+    - boneName: Hua L Foot
+      humanName: LeftFoot
+      limit:
+        min: {x: 0, y: -30.0000019, z: -50}
+        max: {x: 0, y: 30.0000019, z: 50}
+        value: {x: .117714755, y: 0, z: .0588573776}
+        preQ: {x: -.0487620868, y: .00292775035, z: -.997971117, w: -.0408315063}
+        postQ: {x: -0, y: .0301107168, z: -.999546528, w: 0}
+        length: .147143483
+        modified: 1
+    - boneName: Hua R Foot
+      humanName: RightFoot
+      limit:
+        min: {x: 0, y: -30.0000019, z: -50}
+        max: {x: 0, y: 30.0000019, z: 50}
+        value: {x: .117714547, y: 0, z: .0588572733}
+        preQ: {x: .0487623885, y: -.00292640948, z: -.997971117, w: -.0408314504}
+        postQ: {x: 5.96046448e-08, y: -.0301093012, z: -.999546587, w: 2.98023224e-08}
+        length: .147143215
+        modified: 1
+    - boneName: Hua Spine1
+      humanName: Spine
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .0919269249, y: 0, z: .0459634624}
+        preQ: {x: -0, y: 6.85453415e-07, z: -.999738693, w: .0228562653}
+        postQ: {x: 4.470348e-08, y: -6.55651036e-07, z: .99999994, w: -2.10553389e-05}
+        length: .114908695
+        modified: 1
+    - boneName: Hua Spine2
+      humanName: Chest
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .142192796, y: 0, z: .0710963979}
+        preQ: {x: 8.94069672e-08, y: 6.85453415e-07, z: -.999833107, w: .0182677209}
+        postQ: {x: 4.47034871e-08, y: 7.45058117e-07, z: -.999995232, w: -.00307463133}
+        length: .177741066
+        modified: 1
+    - boneName: Hua Head
+      humanName: Head
+      limit:
+        min: {x: -40, y: -40, z: -40}
+        max: {x: 40, y: 40, z: 40}
+        value: {x: .0710963979, y: 0, z: .035548199}
+        preQ: {x: -2.38418579e-07, y: -6.55651093e-07, z: .989829719, w: -.142256841}
+        postQ: {x: 2.98023224e-08, y: 6.2584877e-07, z: -.999390185, w: .0349164009}
+        length: .0888705328
+        modified: 1
+    - boneName: Hua L Clavicle
+      humanName: LeftShoulder
+      limit:
+        min: {x: 0, y: -15.000001, z: -15.000001}
+        max: {x: 0, y: 15.000001, z: 30.0000019}
+        value: {x: .0739366338, y: 0, z: .0369683169}
+        preQ: {x: .419642806, y: .564057112, z: .427892923, w: -.568020344}
+        postQ: {x: -7.76024535e-07, y: -.722287536, z: .691592753, w: -7.09503979e-07}
+        length: .0924208239
+        modified: 1
+    - boneName: Hua R Clavicle
+      humanName: RightShoulder
+      limit:
+        min: {x: 0, y: -15.000001, z: -15.000001}
+        max: {x: 0, y: 15.000001, z: 30.0000019}
+        value: {x: .0739366934, y: 0, z: .0369683467}
+        preQ: {x: -.568018258, y: .427892506, z: .564059198, w: .419643223}
+        postQ: {x: 7.43661076e-07, y: .691592753, z: -.722287536, w: 7.22706318e-07}
+        length: .0924208984
+        modified: 1
+    - boneName: Hua L UpperArm
+      humanName: LeftUpperArm
+      limit:
+        min: {x: -90, y: -100, z: -60.0000038}
+        max: {x: 90, y: 100, z: 100}
+        value: {x: .192767069, y: 0, z: .0963835344}
+        preQ: {x: -.0781553984, y: -.656408072, z: .622018039, w: -.41965887}
+        postQ: {x: -1.02445483e-08, y: -.703562021, z: .710633814, w: 6.96180891e-09}
+        length: .240958914
+        modified: 1
+    - boneName: Hua R UpperArm
+      humanName: RightUpperArm
+      limit:
+        min: {x: -90, y: -100, z: -60.0000038}
+        max: {x: 90, y: 100, z: 100}
+        value: {x: .192767233, y: 0, z: .0963836163}
+        preQ: {x: -.41965878, y: .622018814, z: -.656407475, w: -.0781552643}
+        postQ: {x: -9.87201929e-08, y: -.710633755, z: .703562081, w: -9.04547051e-08}
+        length: .240959108
+        modified: 1
+    - boneName: Hua L Forearm
+      humanName: LeftLowerArm
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: .201663747, y: 0, z: .100831874}
+        preQ: {x: .00494912686, y: -.0130729536, z: .739927888, w: -.672540843}
+        postQ: {x: 4.00468736e-07, y: .00389403827, z: .999992371, w: 1.39698395e-08}
+        length: .252079755
+        modified: 1
+    - boneName: Hua R Forearm
+      humanName: RightLowerArm
+      limit:
+        min: {x: -90, y: 0, z: -80}
+        max: {x: 90, y: 0, z: 80}
+        value: {x: .201663718, y: 0, z: .100831859}
+        preQ: {x: .672540605, y: -.739928067, z: .0130733289, w: -.00494905794}
+        postQ: {x: 7.82310963e-08, y: .999992371, z: .0038938662, w: 2.5331974e-07}
+        length: .252079725
+        modified: 1
+    - boneName: Hua L Hand
+      humanName: LeftHand
+      limit:
+        min: {x: 0, y: -40, z: -80}
+        max: {x: 0, y: 40, z: 80}
+        value: {x: .100831874, y: 0, z: .0504159369}
+        preQ: {x: 2.73808865e-07, y: -.703706622, z: .710490584, w: 2.91226598e-07}
+        postQ: {x: .0101923933, y: .999264121, z: -.0326526947, w: -.0173499864}
+        length: .126039878
+        modified: 1
+    - boneName: Hua R Hand
+      humanName: RightHand
+      limit:
+        min: {x: 0, y: -40, z: -80}
+        max: {x: 0, y: 40, z: 80}
+        value: {x: .100831859, y: 0, z: .0504159294}
+        preQ: {x: 2.30967999e-07, y: .710490465, z: -.703706741, w: 1.24797225e-07}
+        postQ: {x: .0173500422, y: .0326526538, z: -.999264181, w: -.010192493}
+        length: .126039863
+        modified: 1
+    - boneName: Hua L Toe0
+      humanName: LeftToes
+      limit:
+        min: {x: 0, y: 0, z: -50}
+        max: {x: 0, y: 0, z: 50}
+        value: {x: .0655697808, y: 0, z: .0327848904}
+        preQ: {x: .021291554, y: -.021291554, z: .706786096, w: .706786096}
+        postQ: {x: .030110782, y: -0, z: .999546528, w: 0}
+        length: .0819622576
+        modified: 1
+    - boneName: Hua R Toe0
+      humanName: RightToes
+      limit:
+        min: {x: 0, y: 0, z: -50}
+        max: {x: 0, y: 0, z: 50}
+        value: {x: .065569751, y: 0, z: .0327848755}
+        preQ: {x: -.0212905109, y: .0212904215, z: .706786156, w: .706786096}
+        postQ: {x: -.0301092304, y: 2.10734257e-08, z: .999546587, w: 6.3220277e-08}
+        length: .0819622204
+        modified: 1
+    - boneName: Hua L Finger0
+      humanName: Left Thumb Proximal
+      limit:
+        min: {x: 0, y: -25, z: -20}
+        max: {x: 0, y: 25, z: 20}
+        value: {x: .0317173861, y: 0, z: .015858693}
+        preQ: {x: .380337477, y: .571188211, z: -.684936762, w: .244844988}
+        postQ: {x: 7.00354633e-07, y: .20734933, z: -.978266835, w: -2.65240692e-06}
+        length: .0396467522
+        modified: 1
+    - boneName: Hua L Finger01
+      humanName: Left Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -40}
+        max: {x: 0, y: 0, z: 35}
+        value: {x: .0239983033, y: 0, z: .0119991517}
+        preQ: {x: -.0333833657, y: .198410526, z: -.953016639, w: -.226446733}
+        postQ: {x: 2.80141808e-06, y: .206852183, z: -.978372157, w: 6.55651036e-07}
+        length: .029997889
+        modified: 1
+    - boneName: Hua L Finger02
+      humanName: Left Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: -40}
+        max: {x: 0, y: 0, z: 35}
+        value: {x: .017998727, y: 0, z: .00899936352}
+        preQ: {x: -.0405459255, y: .197072104, z: -.960591614, w: -.191787362}
+        postQ: {x: -.0298415851, y: .204689249, z: -.96813482, w: .141161785}
+        length: .0224984176
+        modified: 1
+    - boneName: Hua L Finger1
+      humanName: Left Index Proximal
+      limit:
+        min: {x: 0, y: -20, z: -50}
+        max: {x: 0, y: 20, z: 50}
+        value: {x: .0250701737, y: 0, z: .0125350868}
+        preQ: {x: .355788231, y: .924573481, z: -.0746328086, w: .114053994}
+        postQ: {x: 5.36441689e-07, y: .999179602, z: -.0404978916, w: 3.46160903e-07}
+        length: .0313377269
+        modified: 1
+    - boneName: Hua L Finger11
+      humanName: Left Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0171563402, y: 0, z: .00857817009}
+        preQ: {x: .346725017, y: .932905734, z: -.096712403, w: .0107338401}
+        postQ: {x: -3.7997961e-07, y: .99887991, z: -.0473166555, w: -2.40164809e-07}
+        length: .0214454345
+        modified: 1
+    - boneName: Hua L Finger12
+      humanName: Left Index Distal
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0128672561, y: 0, z: .00643362803}
+        preQ: {x: .308799207, y: .946136534, z: -.0962007269, w: .0146275377}
+        postQ: {x: -.0325430222, y: .998349547, z: -.0472926646, w: .00154142117}
+        length: .016084075
+        modified: 1
+    - boneName: Hua L Finger2
+      humanName: Left Middle Proximal
+      limit:
+        min: {x: 0, y: -7.50000048, z: -50}
+        max: {x: 0, y: 7.50000048, z: 50}
+        value: {x: .0286293402, y: 0, z: .0143146701}
+        preQ: {x: .357057303, y: .929915726, z: -.0694333315, w: .0542749874}
+        postQ: {x: 1.56462193e-06, y: .99965167, z: -.0263907686, w: 7.36617949e-08}
+        length: .0357866846
+        modified: 1
+    - boneName: Hua L Finger21
+      humanName: Left Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0199908596, y: 0, z: .00999542978}
+        preQ: {x: .348078251, y: .935006678, z: -.0674820393, w: .00706246216}
+        postQ: {x: 4.470348e-08, y: .999512434, z: -.0312213786, w: -3.02970847e-07}
+        length: .0249885824
+        modified: 1
+    - boneName: Hua L Finger22
+      humanName: Left Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0149931451, y: 0, z: .00749657257}
+        preQ: {x: .310971975, y: .947994351, z: -.0671475679, w: .00971343089}
+        postQ: {x: -.0175464656, y: .999358356, z: -.0312156826, w: .000547817792}
+        length: .0187414363
+        modified: 1
+    - boneName: Hua L Finger3
+      humanName: Left Ring Proximal
+      limit:
+        min: {x: 0, y: -7.50000048, z: -50}
+        max: {x: 0, y: 7.50000048, z: 50}
+        value: {x: .0262885764, y: 0, z: .0131442882}
+        preQ: {x: .347161889, y: .934357584, z: -.0638976991, w: -.0486971103}
+        postQ: {x: 1.17719162e-06, y: .999921739, z: -.012505441, w: -9.00472443e-08}
+        length: .0328607298
+        modified: 1
+    - boneName: Hua L Finger31
+      humanName: Left Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0176122654, y: 0, z: .00880613271}
+        preQ: {x: .350643426, y: .935835719, z: -.0353480168, w: .00333868735}
+        postQ: {x: 7.74860382e-07, y: .999884129, z: -.0152215268, w: -7.38946255e-08}
+        length: .0220153406
+        modified: 1
+    - boneName: Hua L Finger32
+      humanName: Left Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0132092005, y: 0, z: .00660460023}
+        preQ: {x: .312655479, y: .949202776, z: -.0351837948, w: .00475954451}
+        postQ: {x: -.100550383, y: .994815469, z: -.0151435938, w: .00153064146}
+        length: .0165115055
+        modified: 1
+    - boneName: Hua L Finger4
+      humanName: Left Little Proximal
+      limit:
+        min: {x: 0, y: -20, z: -50}
+        max: {x: 0, y: 20, z: 50}
+        value: {x: .0190574173, y: 0, z: .00952870864}
+        preQ: {x: .334584653, y: .93542701, z: -.0607461445, w: -.0966398194}
+        postQ: {x: 5.6996937e-06, y: .999288976, z: -.0377033539, w: 2.22465655e-06}
+        length: .0238217805
+        modified: 1
+    - boneName: Hua L Finger41
+      humanName: Left Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0142971808, y: 0, z: .0071485904}
+        preQ: {x: .350111216, y: .935249865, z: -.0512105301, w: .0103491908}
+        postQ: {x: -4.71621752e-06, y: .999219775, z: -.0394935608, w: -1.09244138e-06}
+        length: .0178714804
+        modified: 1
+    - boneName: Hua L Finger42
+      humanName: Left Little Distal
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0107228849, y: 0, z: .00536144245}
+        preQ: {x: .312847733, y: .948365271, z: -.0507610217, w: .0123643205}
+        postQ: {x: -.0476618633, y: .99808234, z: -.0394480415, w: .00188243075}
+        length: .0134036103
+        modified: 1
+    - boneName: Hua R Finger0
+      humanName: Right Thumb Proximal
+      limit:
+        min: {x: 0, y: -25, z: -20}
+        max: {x: 0, y: 25, z: 20}
+        value: {x: .0317172669, y: 0, z: .0158586334}
+        preQ: {x: .24484545, y: -.684937596, z: .571188092, w: .380335838}
+        postQ: {x: -2.04145908e-06, y: .978266954, z: -.207349345, w: 1.41561031e-06}
+        length: .0396465994
+        modified: 1
+    - boneName: Hua R Finger01
+      humanName: Right Thumb Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -40}
+        max: {x: 0, y: 0, z: 35}
+        value: {x: .0239986014, y: 0, z: .0119993007}
+        preQ: {x: -.226443693, y: -.953016996, z: .198411286, w: -.033388339}
+        postQ: {x: 1.4603138e-06, y: .978372097, z: -.206852406, w: -1.28149986e-06}
+        length: .0299982596
+        modified: 1
+    - boneName: Hua R Finger02
+      humanName: Right Thumb Distal
+      limit:
+        min: {x: 0, y: 0, z: -40}
+        max: {x: 0, y: 0, z: 35}
+        value: {x: .0179989487, y: 0, z: .00899947435}
+        preQ: {x: -.191789448, y: -.96059072, z: .197073564, w: -.0405475497}
+        postQ: {x: -.141159743, y: .968135118, z: -.204689234, w: .0298431944}
+        length: .0224986952
+        modified: 1
+    - boneName: Hua R Finger1
+      humanName: Right Index Proximal
+      limit:
+        min: {x: 0, y: -20, z: -50}
+        max: {x: 0, y: 20, z: 50}
+        value: {x: .0250700768, y: 0, z: .0125350384}
+        preQ: {x: .11405421, y: -.0746337697, z: .924571931, w: .355791926}
+        postQ: {x: -4.84287739e-07, y: .0404985845, z: -.999179542, w: 9.28994268e-08}
+        length: .0313376039
+        modified: 1
+    - boneName: Hua R Finger11
+      humanName: Right Index Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0171565097, y: 0, z: .00857825484}
+        preQ: {x: .0107336175, y: -.0967133567, z: .932906806, w: .346722007}
+        postQ: {x: 1.25169754e-06, y: .0473170802, z: -.99887985, w: -2.29873694e-06}
+        length: .021445645
+        modified: 1
+    - boneName: Hua R Finger12
+      humanName: Right Index Distal
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0128673827, y: 0, z: .00643369136}
+        preQ: {x: .0146265738, y: -.0962019116, z: .94613564, w: .308801711}
+        postQ: {x: -.00154038519, y: .0472930446, z: -.998349667, w: .0325405002}
+        length: .0160842333
+        modified: 1
+    - boneName: Hua R Finger2
+      humanName: Right Middle Proximal
+      limit:
+        min: {x: 0, y: -7.50000048, z: -50}
+        max: {x: 0, y: 7.50000048, z: 50}
+        value: {x: .0286294091, y: 0, z: .0143147046}
+        preQ: {x: .054274708, y: -.0694340244, z: .92991519, w: .357058585}
+        postQ: {x: 6.70552254e-08, y: .0263910815, z: -.99965167, w: -3.97325493e-07}
+        length: .0357867703
+        modified: 1
+    - boneName: Hua R Finger21
+      humanName: Right Middle Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0199907217, y: 0, z: .00999536086}
+        preQ: {x: .0070622405, y: -.0674827844, z: .935007453, w: .348076493}
+        postQ: {x: -9.68575407e-08, y: .031221645, z: -.999512434, w: -3.06172274e-06}
+        length: .024988411
+        modified: 1
+    - boneName: Hua R Finger22
+      humanName: Right Middle Distal
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0149930427, y: 0, z: .00749652134}
+        preQ: {x: .00971376617, y: -.0671480224, z: .947993219, w: .310974777}
+        postQ: {x: -.000548217329, y: .0312159602, z: -.999358475, w: .0175434873}
+        length: .0187413078
+        modified: 1
+    - boneName: Hua R Finger3
+      humanName: Right Ring Proximal
+      limit:
+        min: {x: 0, y: -7.50000048, z: -50}
+        max: {x: 0, y: 7.50000048, z: 50}
+        value: {x: .0262884926, y: 0, z: .0131442463}
+        preQ: {x: -.048697941, y: -.0638982877, z: .934356987, w: .347163677}
+        postQ: {x: 2.71946192e-07, y: .0125060733, z: -.999921739, w: 1.00382022e-06}
+        length: .0328606255
+        modified: 1
+    - boneName: Hua R Finger31
+      humanName: Right Ring Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0176124461, y: 0, z: .00880622305}
+        preQ: {x: .00333898189, y: -.0353489853, z: .935835481, w: .350643545}
+        postQ: {x: -4.20957775e-07, y: .0152222486, z: -.999884129, w: -8.09348364e-07}
+        length: .022015566
+        modified: 1
+    - boneName: Hua R Finger32
+      humanName: Right Ring Distal
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0132093364, y: 0, z: .00660466822}
+        preQ: {x: .00476024067, y: -.0351845361, z: .949202716, w: .312655509}
+        postQ: {x: -.0015311985, y: .0151441051, z: -.994815469, w: .100550301}
+        length: .016511675
+        modified: 1
+    - boneName: Hua R Finger4
+      humanName: Right Little Proximal
+      limit:
+        min: {x: 0, y: -20, z: -50}
+        max: {x: 0, y: 20, z: 50}
+        value: {x: .0190569814, y: 0, z: .00952849071}
+        preQ: {x: -.0966406465, y: -.0607463531, z: .935427427, w: .334583223}
+        postQ: {x: -9.31322575e-09, y: .0377046615, z: -.999288917, w: 1.14494469e-06}
+        length: .0238212347
+        modified: 1
+    - boneName: Hua R Finger41
+      humanName: Right Little Intermediate
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0142972302, y: 0, z: .00714861508}
+        preQ: {x: .0103492104, y: -.0512133688, z: .935251832, w: .350105703}
+        postQ: {x: 3.53902578e-08, y: .0394951403, z: -.999219716, w: 3.05165327e-06}
+        length: .0178715419
+        modified: 1
+    - boneName: Hua R Finger42
+      humanName: Right Little Distal
+      limit:
+        min: {x: 0, y: 0, z: -45}
+        max: {x: 0, y: 0, z: 45}
+        value: {x: .0107229212, y: 0, z: .00536146061}
+        preQ: {x: .0123657957, y: -.0507633872, z: .948364615, w: .312849283}
+        postQ: {x: -.00188356638, y: .0394495875, z: -.998082459, w: .0476601757}
+        length: .013403656
+        modified: 1
+    skeleton:
+    - name: Scorned_Run
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: .99999994}
+      scale: {x: 1, y: 1, z: 1}
+      transformModified: 1
+    - name: Hua
+      position: {x: 0, y: .938112795, z: -1.1096451e-11}
+      rotation: {x: -.49999997, y: .49999997, z: .49999997, w: .49999997}
+      scale: {x: 2.53999996, y: 2.53999996, z: 2.53999996}
+      transformModified: 1
+    - name: Hua Pelvis
+      position: {x: 7.16155329e-11, y: -1.96648073e-10, z: .0408693328}
+      rotation: {x: .499999285, y: -.500000656, z: -.499999285, w: -.500000656}
+      scale: {x: .99999994, y: .99999994, z: .999999881}
+      transformModified: 1
+    - name: Hua Spine
+      position: {x: -.0313093811, y: -3.59680198e-05, z: 4.92849581e-11}
+      rotation: {x: 2.07088829e-06, y: -1.20373684e-08, z: .0228352677, w: -.99973923}
+      scale: {x: 1.00000012, y: 1.00000024, z: 1}
+      transformModified: 1
+    - name: Hua L Thigh
+      position: {x: .0312749483, y: .00146537751, z: .0391579196}
+      rotation: {x: -.0170878246, y: -.998659909, z: -.00399526022, w: -.0486864559}
+      scale: {x: .999999702, y: 1, z: 1.00000036}
+      transformModified: 1
+    - name: Hua L Calf
+      position: {x: -.160607174, y: 4.74790696e-09, z: 1.04909219e-08}
+      rotation: {x: 7.36535313e-08, y: 6.24441157e-08, z: .000945397071, w: .999999523}
+      scale: {x: .999999821, y: .999999881, z: 1}
+      transformModified: 1
+    - name: Hua L Foot
+      position: {x: -.194516152, y: -2.2160056e-09, z: -3.71347255e-08}
+      rotation: {x: -.0271231737, y: .0499694906, z: -.0393447168, w: .997606814}
+      scale: {x: .999999821, y: .999999702, z: .999999642}
+      transformModified: 1
+    - name: Hua L Toe0
+      position: {x: -.0533640161, y: .0362951495, z: 1.02798685e-08}
+      rotation: {x: -2.18103153e-08, y: -2.36711131e-08, z: -.707106769, w: .707106769}
+      scale: {x: .99999994, y: 1.00000012, z: 1.00000024}
+      transformModified: 1
+    - name: Hua R Thigh
+      position: {x: .0312751345, y: .00146559952, z: -.0391578823}
+      rotation: {x: -.0170877017, y: -.998659909, z: .00399245927, w: .0486865416}
+      scale: {x: .99999994, y: 1, z: .99999994}
+      transformModified: 1
+    - name: Hua R Calf
+      position: {x: -.16060707, y: -1.26517667e-08, z: 3.28768799e-08}
+      rotation: {x: -3.67288564e-08, y: 8.20998025e-08, z: .000945367152, w: .999999523}
+      scale: {x: 1.00000012, y: .999999881, z: 1}
+      transformModified: 1
+    - name: Hua R Foot
+      position: {x: -.194516107, y: 1.6066096e-08, z: -3.32778605e-08}
+      rotation: {x: .0271232072, y: -.0499696396, z: -.0393447503, w: .997606754}
+      scale: {x: .999999881, y: 1.00000012, z: .999999821}
+      transformModified: 1
+    - name: Hua R Toe0
+      position: {x: -.0533639565, y: .0362951271, z: -2.24545404e-09}
+      rotation: {x: -2.68105627e-08, y: -1.06667379e-07, z: -.707106709, w: .707106829}
+      scale: {x: 1.00000024, y: 1.00000036, z: .99999994}
+      transformModified: 1
+    - name: Hua Spine1
+      position: {x: -.0452395156, y: -3.59978512e-05, z: 5.62963634e-11}
+      rotation: {x: -1.57448987e-08, y: 8.87894345e-08, z: -.0228352379, w: -.99973923}
+      scale: {x: .999999881, y: .999999821, z: 1}
+      transformModified: 1
+    - name: Hua Spine2
+      position: {x: -.0452396423, y: -1.91093704e-06, z: 2.89343505e-09}
+      rotation: {x: -4.48393074e-08, y: -5.74241561e-08, z: .0213417541, w: .999772191}
+      scale: {x: 1, y: .99999994, z: .999999821}
+      transformModified: 1
+    - name: Hua Neck
+      position: {x: -.0517364889, y: -.00883293152, z: -1.45286316e-08}
+      rotation: {x: -2.82103479e-10, y: 4.53875714e-07, z: -.163349077, w: .986568272}
+      scale: {x: .99999994, y: .99999994, z: 1}
+      transformModified: 1
+    - name: Hua Head
+      position: {x: -.0202513132, y: .0028902723, z: 2.66189004e-09}
+      rotation: {x: -8.19498869e-09, y: 3.09220866e-07, z: -.107608818, w: -.994193256}
+      scale: {x: 1.00000012, y: 1.00000036, z: 1.0000006}
+      transformModified: 1
+    - name: Hua L Clavicle
+      position: {x: .0162150636, y: -.00766166346, z: .0224624537}
+      rotation: {x: -.699160337, y: -.120052181, z: .695940852, w: -.111483738}
+      scale: {x: 1.00000024, y: 1.00000024, z: 1.00000012}
+      transformModified: 1
+    - name: Hua L UpperArm
+      position: {x: -.036386162, y: 4.20326485e-09, z: -7.03778653e-08}
+      rotation: {x: .0268002916, y: -.0166172478, z: .00509943394, w: .999489665}
+      scale: {x: 1.00000024, y: 1.00000036, z: 1}
+      transformModified: 1
+    - name: Hua L Forearm
+      position: {x: -.0948656946, y: 2.31596764e-09, z: 5.89231153e-09}
+      rotation: {x: -.000121259996, y: .00248745806, z: .0398251005, w: .999203503}
+      scale: {x: .99999994, y: .999999464, z: .999999762}
+      transformModified: 1
+    - name: Hua L Hand
+      position: {x: -.0992439836, y: 4.27061941e-09, z: 9.39557907e-08}
+      rotation: {x: .686989903, y: .00496740267, z: -.0194997266, w: -.726388276}
+      scale: {x: .999999762, y: .999999642, z: .999999583}
+      transformModified: 1
+    - name: Hua L Finger0
+      position: {x: -.00807590503, y: .00568619883, z: -.00944867451}
+      rotation: {x: .490429103, y: -.267966151, z: .188138232, w: .807636917}
+      scale: {x: 1.00000012, y: .999999762, z: 1.00000083}
+      transformModified: 1
+    - name: Hua L Finger01
+      position: {x: -.0156089589, y: 8.16380421e-08, z: 1.58171054e-09}
+      rotation: {x: -4.7073226e-07, y: 4.75504294e-07, z: -.0362120941, w: .99934411}
+      scale: {x: 1, y: 1.00000024, z: .999999821}
+      transformModified: 1
+    - name: Hua L Finger02
+      position: {x: -.0118101891, y: -1.06514726e-08, z: -5.21213437e-08}
+      rotation: {x: -1.04234778e-06, y: 5.51100072e-07, z: -.144281536, w: .989536643}
+      scale: {x: .999999762, y: 1.00000012, z: .999999881}
+      transformModified: 1
+    - name: Hua L Finger1
+      position: {x: -.0355266519, y: .000360080594, z: -.00900419801}
+      rotation: {x: -.00265439576, y: -.0341874883, z: -.0769374296, w: .996446013}
+      scale: {x: 1.00000048, y: 1.00000083, z: 1.00000012}
+      transformModified: 1
+    - name: Hua L Finger11
+      position: {x: -.0123376921, y: 3.3466808e-08, z: -8.95308183e-09}
+      rotation: {x: 2.04606607e-07, y: -4.62985987e-08, z: -.0403507091, w: .999185562}
+      scale: {x: 1.00000012, y: .999999762, z: .999999762}
+      transformModified: 1
+    - name: Hua L Finger12
+      position: {x: -.00844308361, y: -1.27508315e-09, z: 4.44224524e-09}
+      rotation: {x: 1.1220659e-06, y: 1.15594588e-07, z: -.0325791389, w: .999469101}
+      scale: {x: 1.00000012, y: 1.00000048, z: 1.00000012}
+      transformModified: 1
+    - name: Hua L Finger2
+      position: {x: -.0365651399, y: -.000177546244, z: -.00158729462}
+      rotation: {x: -.0145989135, y: -.00957796164, z: -.0768892542, w: .996886671}
+      scale: {x: 1.00000024, y: 1.00000131, z: 1.00000131}
+      transformModified: 1
+    - name: Hua L Finger21
+      position: {x: -.0140892435, y: 4.26344613e-08, z: -3.57223429e-09}
+      rotation: {x: -4.3706018e-06, y: -6.4361393e-07, z: -.039396584, w: .99922359}
+      scale: {x: 1.00000083, y: .999999762, z: 1.00000036}
+      transformModified: 1
+    - name: Hua L Finger22
+      position: {x: -.00983801764, y: 1.60413638e-08, z: 5.02204189e-09}
+      rotation: {x: -8.88982242e-07, y: 2.29687984e-08, z: -.017555058, w: .999845862}
+      scale: {x: .999999821, y: 1.0000006, z: 1}
+      transformModified: 1
+    - name: Hua L Finger3
+      position: {x: -.0350127295, y: .000152340537, z: .00510170311}
+      rotation: {x: -.0249530636, y: .0200865157, z: -.0639606863, w: .997438133}
+      scale: {x: .999999583, y: 1.00000036, z: 1.00000036}
+      transformModified: 1
+    - name: Hua L Finger31
+      position: {x: -.0129373046, y: 4.96524244e-08, z: 1.08452936e-09}
+      rotation: {x: -1.13989427e-06, y: -1.47712313e-07, z: -.0402883254, w: .999188066}
+      scale: {x: 1.00000024, y: .999999464, z: .999999762}
+      transformModified: 1
+    - name: Hua L Finger32
+      position: {x: -.00866747089, y: 1.96990761e-08, z: 2.3780804e-09}
+      rotation: {x: -7.77458183e-07, y: -5.23467758e-09, z: -.100562796, w: .994930685}
+      scale: {x: .999999642, y: 1.00000024, z: 1.00000024}
+      transformModified: 1
+    - name: Hua L Finger4
+      position: {x: -.03327154, y: .00139064493, z: .0113338185}
+      rotation: {x: .00200381619, y: .0294373371, z: -.050802961, w: .998272717}
+      scale: {x: .999999523, y: 1.00000107, z: 1}
+      transformModified: 1
+    - name: Hua L Finger41
+      position: {x: -.00937866047, y: 8.54218456e-08, z: -4.46230644e-08}
+      rotation: {x: -8.8248072e-07, y: -1.98385419e-06, z: -.0395503491, w: .99921757}
+      scale: {x: 1.00000155, y: .999999285, z: 1.00000036}
+      transformModified: 1
+    - name: Hua L Finger42
+      position: {x: -.00703600002, y: -4.81344635e-08, z: 1.60632805e-08}
+      rotation: {x: -6.22647917e-07, y: -9.82727357e-08, z: -.047694359, w: .998861909}
+      scale: {x: .999998987, y: 1.00000131, z: .999999881}
+      transformModified: 1
+    - name: Hua R Clavicle
+      position: {x: .0162150636, y: -.00766153866, z: -.022462517}
+      rotation: {x: .69915998, y: .120050229, z: .69594115, w: -.111485705}
+      scale: {x: 1, y: 1.00000012, z: .99999994}
+      transformModified: 1
+    - name: Hua R UpperArm
+      position: {x: -.0363861881, y: -8.5192664e-10, z: -7.02005494e-08}
+      rotation: {x: .0268002264, y: -.0166172199, z: -.00509944139, w: -.999489665}
+      scale: {x: 1.00000036, y: 1.00000024, z: 1.00000024}
+      transformModified: 1
+    - name: Hua R Forearm
+      position: {x: -.0948657691, y: 8.85116425e-10, z: -4.09717309e-08}
+      rotation: {x: -.000121260557, y: .00248748064, z: -.0398248211, w: -.999203503}
+      scale: {x: 1.00000012, y: .999999821, z: 1.00000036}
+      transformModified: 1
+    - name: Hua R Hand
+      position: {x: -.0992439613, y: 1.39828629e-08, z: -3.91850854e-08}
+      rotation: {x: .686989844, y: .00496743899, z: .0194996893, w: .726388335}
+      scale: {x: .99999994, y: .999999583, z: .999999821}
+      transformModified: 1
+    - name: Hua R Finger0
+      position: {x: -.00807575043, y: .00568606472, z: .00944862422}
+      rotation: {x: -.490430415, y: .267963052, z: .188134432, w: .80763799}
+      scale: {x: 1.00000012, y: .999999404, z: 1.00000012}
+      transformModified: 1
+    - name: Hua R Finger01
+      position: {x: -.0156089012, y: -6.34163086e-08, z: -2.75445977e-08}
+      rotation: {x: 6.06214599e-07, y: -2.90488993e-06, z: -.0362061933, w: .999344289}
+      scale: {x: .99999994, y: .999999583, z: .99999994}
+      transformModified: 1
+    - name: Hua R Finger02
+      position: {x: -.0118103409, y: 4.89051217e-08, z: 3.65029074e-08}
+      rotation: {x: 9.90479634e-07, y: -5.6770034e-07, z: -.144281581, w: .989536643}
+      scale: {x: .999999821, y: 1.00000048, z: .99999994}
+      transformModified: 1
+    - name: Hua R Finger1
+      position: {x: -.0355266593, y: .000360118254, z: .00900419801}
+      rotation: {x: .00265437691, y: .0341879204, z: -.0769420862, w: .996445656}
+      scale: {x: 1.00000048, y: 1.00000048, z: .999999523}
+      transformModified: 1
+    - name: Hua R Finger11
+      position: {x: -.0123376166, y: -1.53848116e-08, z: 1.30761828e-08}
+      rotation: {x: -2.58674504e-07, y: 3.14722456e-07, z: -.0403448828, w: .999185801}
+      scale: {x: 1.00000048, y: 1.00000012, z: .999999821}
+      transformModified: 1
+    - name: Hua R Finger12
+      position: {x: -.00844314508, y: 3.21666214e-08, z: -1.77724875e-08}
+      rotation: {x: -1.04054129e-06, y: -9.62105489e-08, z: -.0325792991, w: .999469101}
+      scale: {x: .99999994, y: 1.00000036, z: 1.00000012}
+      transformModified: 1
+    - name: Hua R Finger2
+      position: {x: -.0365652218, y: -.000177439535, z: .00158729265}
+      rotation: {x: .0145988362, y: .0095779337, z: -.0768917874, w: .996886492}
+      scale: {x: 1.00000095, y: 1.00000095, z: 1.00000107}
+      transformModified: 1
+    - name: Hua R Finger21
+      position: {x: -.014089263, y: 2.04261124e-08, z: -9.07303566e-10}
+      rotation: {x: 4.37213657e-06, y: -2.72652329e-07, z: -.0393917598, w: .999223828}
+      scale: {x: 1.00000012, y: .999999642, z: 1}
+      transformModified: 1
+    - name: Hua R Finger22
+      position: {x: -.00983794779, y: 4.10725924e-08, z: 2.12578999e-09}
+      rotation: {x: 8.70899214e-07, y: -2.62329944e-08, z: -.0175551046, w: .999845862}
+      scale: {x: .999999523, y: 1.00000048, z: 1}
+      transformModified: 1
+    - name: Hua R Finger3
+      position: {x: -.0350127779, y: .000152437147, z: -.00510170963}
+      rotation: {x: .024952665, y: -.0200870614, z: -.0639647841, w: .997437835}
+      scale: {x: .999999821, y: .999999881, z: .999999523}
+      transformModified: 1
+    - name: Hua R Finger31
+      position: {x: -.0129372496, y: -4.09200922e-08, z: -7.42318651e-09}
+      rotation: {x: 1.2202247e-06, y: -2.6142564e-07, z: -.0402885154, w: .999188066}
+      scale: {x: 1.00000012, y: .999999762, z: 1.00000012}
+      transformModified: 1
+    - name: Hua R Finger32
+      position: {x: -.00866754912, y: 1.15919505e-08, z: 7.02267888e-09}
+      rotation: {x: 9.34351704e-07, y: 4.74548356e-09, z: -.100562774, w: .994930685}
+      scale: {x: .99999994, y: 1.00000024, z: .99999994}
+      transformModified: 1
+    - name: Hua R Finger4
+      position: {x: -.0332717523, y: .00139082375, z: -.0113338372}
+      rotation: {x: -.00200492237, y: -.0294356998, z: -.0508083105, w: .998272479}
+      scale: {x: 1.00000012, y: 1.00000083, z: .999999821}
+      transformModified: 1
+    - name: Hua R Finger41
+      position: {x: -.00937844161, y: -4.21006829e-09, z: 1.07322817e-09}
+      rotation: {x: 7.98308008e-07, y: 1.70376566e-07, z: -.0395429134, w: .999217808}
+      scale: {x: 1.00000083, y: .999999285, z: 1}
+      transformModified: 1
+    - name: Hua R Finger42
+      position: {x: -.00703602191, y: -3.64244812e-08, z: -4.71228889e-10}
+      rotation: {x: 6.09608776e-07, y: 9.23589312e-08, z: -.0476943292, w: .998861909}
+      scale: {x: .999999285, y: 1.00000083, z: 1.00000012}
+      transformModified: 1
+    handles: []
+    armTwist: .400999993
+    foreArmTwist: .463999987
+    upperLegTwist: .423000008
+    legTwist: .5
+    armStretch: .202000007
+    legStretch: 0
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: 9ba7d9dcb30175d418fd859f4891eaf1,
+    type: 3}
+  additionalBone: 1
+  animationType: 3
+  userData: 
