@@ -1,0 +1,156 @@
+fileFormatVersion: 2
+guid: a1629700ad95e034fbef0e269869f0fc
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: BN_Root
+    100002: BN_Spine1
+    100004: BN_Spine2
+    100006: BN_Spine3
+    100008: BN_Spine4
+    100010: BN_Tip_Open_004
+    100012: BN_Tip_Open_005
+    100014: BN_Tip_Open_006
+    100016: BN_Tip_Open_1
+    100018: BN_Tip_Open_2
+    100020: BN_Tip_Open_3
+    100022: Bone001
+    100024: Bone002
+    100026: Bone003
+    100028: Bone004
+    100030: Bone005
+    100032: Bone006
+    100034: Bone007
+    100036: Bone008
+    100038: Bone009
+    100040: Bone010
+    100042: Bone011
+    100044: Bone012
+    100046: Dummy009
+    100048: //RootNode
+    100050: Sphere021
+    400000: BN_Root
+    400002: BN_Spine1
+    400004: BN_Spine2
+    400006: BN_Spine3
+    400008: BN_Spine4
+    400010: BN_Tip_Open_004
+    400012: BN_Tip_Open_005
+    400014: BN_Tip_Open_006
+    400016: BN_Tip_Open_1
+    400018: BN_Tip_Open_2
+    400020: BN_Tip_Open_3
+    400022: Bone001
+    400024: Bone002
+    400026: Bone003
+    400028: Bone004
+    400030: Bone005
+    400032: Bone006
+    400034: Bone007
+    400036: Bone008
+    400038: Bone009
+    400040: Bone010
+    400042: Bone011
+    400044: Bone012
+    400046: Dummy009
+    400048: //RootNode
+    400050: Sphere021
+    4300000: Sphere021
+    7400000: ScrewDriver Open
+    7400002: ScrewDriver Close
+    9500000: //RootNode
+    13700000: Sphere021
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations:
+    - name: ScrewDriver Open
+      takeName: Take 001
+      firstFrame: 35
+      lastFrame: 70
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      keepAdditionalBonesAnimation: 1
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      skeletonMaskElements: []
+    - name: ScrewDriver Close
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 35
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      keepAdditionalBonesAnimation: 1
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      skeletonMaskElements: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
